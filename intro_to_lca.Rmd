@@ -1,14 +1,13 @@
 ---
-title: "Introduction to R and RStudio"
-author: "YOUR NAME HERE!!!!"
+title: "Introduction to Mixture Models - Latent Class Analysis"
+subtitle: 'Labs created by Adam Garber and Dina Arch'
+author: "YOUR NAME HERE"
 date: "Updated: `r format(Sys.time(), '%B %d, %Y')`"
 output:
   html_document:
     toc: yes
     toc_float: yes
     theme: flatly
-  pdf_document:
-    toc: yes
 editor_options: 
   markdown: 
     wrap: sentence
@@ -20,169 +19,455 @@ knitr::opts_chunk$set(echo = TRUE,
                       message = FALSE) #Here, I have made it so that when you knit your .rmd, warnings and messages will not show up in the html markdown. 
 ```
 
-------------------------------------------------------------------------
 
-# Introduction to R and RStudio
+`University of California, Santa Barbara`
 
-This walkthrough will go through some common tasks carried out in R.
-There are many free resources available to get started with R and RStudio.
-One of our favorites is [*R for Data Science*](https://r4ds.had.co.nz/).
 
 ------------------------------------------------------------------------
 
-## PART 1: Installation
+Load packages
+
+```{r, cache = FALSE}
+
+library(tidyverse)
+library(haven)
+library(glue)
+library(MplusAutomation)
+library(rhdf5)
+library(here)
+library(janitor)
+library(gt)
+library(semPlot)
+library(reshape2)
+library(cowplot)
+library(filesstrings)
+library(hrbrthemes)
+library(poLCA)
+here::i_am("intro_to_lca.Rmd")
+```
 
 ------------------------------------------------------------------------
 
-### Step 0: Install R, RStudio, and Mplus
-
-[Here](https://posit.co/download/rstudio-desktop/) you will find a guide to installing both R and R Studio.
-You can also install Mplus [here](https://www.statmodel.com/orderonline/).
-
-*Note*: The installation of Mplus requires a paid license with the mixture add-on.
-IMMERSE fellows will be given their own copy of Mplus for use during the one year training.
+## Example: Undergraduate Cheating behavior
 
 ------------------------------------------------------------------------
 
-## PART 2: Set-up
+"Dichotomous self-report responses by 319 undergraduates to four questions about cheating behavior" (poLCA, 2016).
+
+*Data source*: This example utilizes a dataset on undergraduate *Cheating* available from the `poLCA` package (Dayton, 1998): [See documentation here](https://cran.r-project.org/web/packages/poLCA/poLCA.pdf)
 
 ------------------------------------------------------------------------
 
-### Step 1: Create a new R-project in RStudio
+```{r, echo=FALSE, eval=TRUE, out.width = "50%", out.height= "50%", fig.pos="h", fig.align='center'}
 
-R-projects help us organize our folders , filepaths, and scripts.
-To create a new R project:
-
--   File --\> New Project...
-
-Click "New Directory" --\> New Project --\> Name your project
-
-### Step 2: Create an R-markdown document
-
-An R-markdown file provides an authoring framework for data science that allows us to organize our reports using texts and code chunks.
-This document you are reading was made using R-markdown!
-
-To create an R-markdown:
-
--   File --\> New File --\> R Markdown...
-
-In the window that pops up, give the R-markdown a title such as "**Introduction to R and RStudio**" Click "OK." You should see a new markdown with some example text and code chunks.
-We want a clean document to start off with so delete everything from line 10 down.
-Go ahead and save this document in your R Project folder.
-
-### Step 3: Load packages
-
-Your first code chunk in any given markdown should be the packages you will be using.
-To insert a code chunk, etiher use the keyboard shortcut ctrl + alt + i or Code --\> Insert Chunk or click the green box with the letter C on it.
-There are a few packages we want our markdown to read in:
-
-```{r}
-library(haven) #for read_sav() function
-library(psych) # describe()
-library(here) #helps with filepaths
-library(tidyverse) #collection of R packages designed for data science
+knitr::include_graphics(here("figures", "LCA_Diagram0_SEMLAB8.png"))
 ```
-
-As a reminder, if a function does not work and you receive an error like this: `could not find function "random_function"`; or if you try to load a package and you receive an error like this: `` there is no package called `random_package` `` , then you will need to install the package using `install.packages("random_package")` in the console (the bottom-left window in R studio).
-Once you have installed the package you will *never* need to install it again, however you must *always* load in the packages at the beginning of your R markdown using `library(random_package)`, as shown in this document.
 
 ------------------------------------------------------------------------
 
-## PART 3: Explore the data
+```{r, echo=FALSE, eval=TRUE}
+
+tribble(
+   ~"Name",      ~"Label",  ~"Values",                                   
+#--------------|--------------------------------|-----|,
+  "LieExam",   "lied to avoid taking an exam"                   ,  "0 = No, 1 = Yes",
+  "LiePaper",  "lied to avoid handing a term paper in on time",  "0 = No, 1 = Yes",
+  "Fraud", "purchased a term paper to hand in as their own or had obtained a copy of an exam prior to taking the exam"     ,  "0 = No, 1 = Yes",
+  "CopyExam",   "copied answers during an exam from someone sitting near to them ",  "0 = No, 1 = Yes") %>% 
+  gt() %>% 
+  tab_header(
+    title = "LCA indicators"  # Add a title
+  ) %>%
+  tab_options(
+    table.width = pct(80)
+  ) %>%
+  tab_footnote(
+    footnote = "Undergraduate Cheating Behavior",
+    location = cells_title())
+
+```
 
 ------------------------------------------------------------------------
 
-### Step 4: Read in data
+### Prepare Data
 
-The variables used in this example is from in Chapter 4 of Tabachnick & Fidell (2012).
-The chapter is a useful resource if you need more information on how to clean and screen your data and write up the results.
-Note that all examples used are for purposes of illustration only and are not intended to be interpreted substantively.
+```{r, eval=TRUE}
 
-Here is a table of the variables and their description:
+data(cheating)
 
-|              |                                |
-|--------------|--------------------------------|
-| **Variable** | **Description**                |
-| subno        | Subject/Participant number     |
-| timedrs      | Visits to health professionals |
-| atthouse     | Attitudes toward housework     |
+df_cheat <-  cheating %>% 
+  clean_names() %>% 
+  dplyr::select(1:4) %>%                                   
+  dplyr::mutate_all(funs(.-1)) # Subtracts one from all variables (so that 0=No and 1=Yes)                     
 
-The style of code and package we will be using is called [`tidyverse`](https://www.tidyverse.org/) .
-Most functions are within the `tidyverse` package and if not, I've indicated the packages used in the code chunk above.
-
-**To read in data in R**:
-
-```{r}
-data <- read_sav(here("data", "health.sav"))
-
-# Ways to view data in R:
-# 1. click on the data in your Global Environment (upper right pane) or use...
-View(data)
-# 2. summary() gives basic summary statistics & shows number of NA values
-# *great for checking that data has been read in correctly*
-summary(data)
-# 3. names() provides a list of column names. Very useful if you don't have them memorized!
-names(data)
-# 4. head() prints the top x rows of the dataframe
-head(data)
 ```
 
-You can also look at the dataframe with labels and response scale meta-data:
+------------------------------------------------------------------------
+
+### Descriptive Statistics
 
 ```{r}
-sjPlot::view_df(data)
+ds <- df_cheat %>% 
+  pivot_longer(lieexam:copyexam, names_to = "variable") %>% 
+  group_by(variable) %>% 
+  summarise(prop = sum(value)/n(),
+            n = n()) %>%
+  arrange(desc(prop))
+
+ds %>% 
+  gt () %>% 
+  tab_header(title = md("**Descriptive Summary**")) %>%
+  cols_label(
+    variable = "Variable",
+    n = md("*N*"),
+    prop = md("Proportion Endorsed")
+  ) %>%
+  fmt_number(c(2),
+             decimals = 2) %>% 
+  cols_align(
+    align = "center",
+    columns = prop
+  ) 
 ```
 
-This SPSS dataset gives us more information than the *.dat* one.
-We are able to see the variable names, and descriptions.
 
-**Convert from *.sav* to *.csv***
+------------------------------------------------------------------------
 
-Usually, we want to work with .csv files, so let's convert this data set from *.sav* to *.csv* and save it to our computers.
-Here is how to convert the ***.sav*** **to *.csv***:
+### Enumeration 
+
+This code uses the `mplusObject` function in the `MplusAutomation` package. 
+
+```{r, cache = TRUE}
+
+lca_cheat_6  <- lapply(1:6, function(k) {
+  lca_enum  <- mplusObject(
+      
+    TITLE = glue("Class {k}"), 
+  
+    VARIABLE = glue(
+    "categorical = lieexam-copyexam; 
+     usevar = lieexam-copyexam;
+     classes = c({k}); "),
+  
+  ANALYSIS = 
+   "estimator = mlr; 
+    type = mixture;
+    stseed = 5212020;
+    starts = 200 100; 
+    processors = 10;",
+  
+  OUTPUT = "sampstat residual tech11 tech14;",
+  
+  PLOT = 
+    "type = plot3; 
+    series = lieexam-copyexam(*);",
+  
+  usevariables = colnames(df_cheat),
+  rdata = df_cheat)
+
+lca_enum_fit <- mplusModeler(lca_enum, 
+                            dataout=glue(here("enum_mplus", "cheat_Lab3.dat")),
+                            modelout=glue(here("enum_mplus", "c{k}_cheat_Lab3.inp")) ,
+                            check=TRUE, run = TRUE, hashfilename = FALSE)
+})
+
+```
+ 
+------------------------------------------------------------------------
+
+### Table of Fit 
+
+First, extract data:
 
 ```{r}
-# write_csv saves a .csv version of your dataset to your working directory.
-# Enter the name of the object that contains your data set (in this case, "health_data.csv"), then enter the name you want to save your dataset as. We can call it the same thing: "health.csv"
-write_csv(data, here("data", "health_data.csv"))
+# 
+output_cheat <- readModels(here("enum_mplus"), filefilter = "cheat", quiet = TRUE)
 
-# read the unlabeled data back into R
-data_csv <- read_csv(here("data", "health_data.csv"))
+enum_extract <- LatexSummaryTable(
+  output_cheat,
+  keepCols = c(
+    "Title",
+    "Parameters",
+    "LL",
+    "BIC",
+    "aBIC",
+    "BLRT_PValue",
+    "T11_VLMR_PValue",
+    "Observations"
+  ),
+  sortBy = "Title"
+)
+
+
+allFit <- enum_extract %>%
+  mutate(aBIC = -2 * LL + Parameters * log((Observations + 2) / 24)) %>%
+  mutate(CAIC = -2 * LL + Parameters * (log(Observations) + 1)) %>%
+  mutate(AWE = -2 * LL + 2 * Parameters * (log(Observations) + 1.5)) %>%
+  mutate(SIC = -.5 * BIC) %>%
+  mutate(expSIC = exp(SIC - max(SIC))) %>%
+  mutate(BF = exp(SIC - lead(SIC))) %>%
+  mutate(cmPk = expSIC / sum(expSIC)) %>%
+  dplyr::select(1:5, 9:10, 6:7, 13, 14) %>%
+  arrange(Parameters)
 ```
 
-Use `names()` to view the variable names in the data set:
+Then, create table:
 
 ```{r}
-names(data_csv)
+fit_table1 <- allFit %>%
+  gt() %>%
+  tab_header(title = md("**Model Fit Summary Table**")) %>%
+  cols_label(
+    Title = "Classes",
+    Parameters = md("Par"),
+    LL = md("*LL*"),
+    T11_VLMR_PValue = "VLMR",
+    BLRT_PValue = "BLRT",
+    BF = md("BF"),
+    cmPk = md("*cmPk*")
+  ) %>%
+  tab_footnote(
+    footnote = md(
+      "*Note.* Par = Parameters; *LL* = model log likelihood;
+BIC = Bayesian information criterion;
+aBIC = sample size adjusted BIC; CAIC = consistent Akaike information criterion;
+AWE = approximate weight of evidence criterion;
+BLRT = bootstrapped likelihood ratio test p-value;
+VLMR = Vuong-Lo-Mendell-Rubin adjusted likelihood ratio test p-value;
+*cmPk* = approximate correct model probability."
+    ),
+locations = cells_title()
+  ) %>%
+  tab_options(column_labels.font.weight = "bold") %>%
+  fmt_number(c(3:7),
+             decimals = 2) %>%
+  fmt_missing(1:11,
+              missing_text = "--") %>%
+  fmt(
+    c(8:9, 11),
+    fns = function(x)
+      ifelse(x < 0.001, "<.001",
+             scales::number(x, accuracy = .01))
+  ) %>%
+  fmt(
+    10,
+    fns = function (x)
+      ifelse(x > 100, ">100",
+             scales::number(x, accuracy = .01))
+  ) %>%  
+  tab_style(
+    style = list(
+      cell_text(weight = "bold")
+      ),
+    locations = list(cells_body(
+     columns = BIC,
+     row = BIC == min(BIC[c(1:6)]) # Change this to the number of classes you estimated
+    ),
+    cells_body(
+     columns = aBIC,
+     row = aBIC == min(aBIC[1:6])
+    ),
+    cells_body(
+     columns = CAIC,
+     row = CAIC == min(CAIC[1:6])
+    ),
+    cells_body(
+     columns = AWE,
+     row = AWE == min(AWE[1:6])
+    ),
+    cells_body(
+     columns = cmPk,
+     row =  cmPk == max(cmPk[1:6])
+     ),    
+    cells_body(
+     columns = BF,
+     row =  BF > 10),
+    cells_body(
+     columns =  T11_VLMR_PValue,
+     row =  T11_VLMR_PValue < .001),
+    cells_body(
+     columns =  BLRT_PValue,
+     row =  BLRT_PValue < .001)
+  )
+)
+
+fit_table1
 ```
 
-### Step 5: Descriptive Statistics
 
-Let's look at descriptive statistics for each variable.
-Because looking at the ID variable's (`subno`) descriptives is unnecessary, we use `select()` to remove the variable by using the minus (`-`) sign:
+------------------------------------------------------------------------
+
+Save table: 
+
+```{r, eval = FALSE}
+gtsave(fit_table1, here("figures", "fit_table1.png"))
+```
+
+------------------------------------------------------------------------
+
+### Information Criteria Plot
+
+```{r height=5, width=7}
+allFit %>%
+  dplyr::select(2:7) %>%
+  rowid_to_column() %>%
+  pivot_longer(`BIC`:`AWE`,
+               names_to = "Index",
+               values_to = "ic_value") %>%
+  mutate(Index = factor(Index,
+                        levels = c ("AWE", "CAIC", "BIC", "aBIC"))) %>%
+  ggplot(aes(
+    x = rowid,
+    y = ic_value,
+    color = Index,
+    shape = Index,
+    group = Index,
+    lty = Index
+  )) +
+  geom_point(size = 2.0) + geom_line(size = .8) +
+  scale_x_continuous(breaks = 1:nrow(allFit)) +
+  scale_colour_grey(end = .5) +
+  theme_cowplot() +
+  labs(x = "Number of Classes", y = "Information Criteria Value", title = "Information Criteria") +
+  theme(
+    text = element_text(family = "Times", size = 12),
+    legend.text = element_text(family="Times", size=12),
+    legend.key.width = unit(3, "line"),
+    legend.title = element_blank(),
+    legend.position = "top"  
+  )
+```
+
+------------------------------------------------------------------------
+
+Save figure:
 
 ```{r}
-data_csv %>% 
-  select(-subno) %>% 
-  summary()
+ggsave(here("figures", "info_criteria.png"), dpi=300, height=5, width=7, units="in")
 ```
 
-Alternatively, we can use the `psych::describe()` function to give more information:
+
+------------------------------------------------------------------------
+
+### Compare Class Solutions
+
+Compare probability plots for $K = 1:6$ class solutions
 
 ```{r}
-data_csv %>% 
-  select(-subno) %>% 
-  describe()
+model_results <- data.frame()
+
+for (i in 1:length(output_cheat)) {
+  
+  temp <- output_cheat[[i]]$parameters$probability.scale %>%                                       
+    mutate(model = paste(i,"-Class Model"))                                                  
+  
+  model_results <- rbind(model_results, temp)
+}
+
+rm(temp)
+
+compare_plot <-
+  model_results %>%
+  filter(category == 2) %>%
+  dplyr::select(est, model, LatentClass, param) %>%
+  mutate(param = as.factor(str_to_lower(param))) 
+
+compare_plot$param <- fct_inorder(compare_plot$param)
+
+ggplot(
+  compare_plot,
+  aes(
+    x = param,
+    y = est,
+    color = LatentClass,
+    shape = LatentClass,
+    group = LatentClass,
+    lty = LatentClass
+  )
+) +
+  geom_point() + 
+  geom_line() +
+  scale_colour_viridis_d() +
+  facet_wrap( ~ model, ncol = 2) +
+  labs(title = "Cheating Behavior Items",
+       x = " ", y = "Probability") +
+  theme_minimal() +
+  theme(panel.grid.major.y = element_blank(),
+                          axis.text.x = element_text(angle = -45, hjust = -.1))                            
 ```
 
-What if we want to look at a subset of the data?
-For example, what if we want to subset the data to see whose been to the doctor more than 10 times?
-We can use `tidyverse::filter()` to subset the data using certain criteria.
+
+------------------------------------------------------------------------
+
+Save figure:
+
+```{r, eval = FALSE}
+ggsave(here("figures", "compare_kclass_plot.png"), dpi=300, height=5, width=7, units="in")
+```
+
+------------------------------------------------------------------------
+
+### 2-Class Probability Plot
 
 ```{r}
-data_csv %>% 
-  filter(timedrs > 10) %>% 
-  describe() 
+source("plot_lca_function.txt")
 
-#You can use any operator to filter: >, <, ==, >=, etc.
+plot_lca_function(model_name = output_cheat$c2_cheat_lab3.out)
 ```
+
+------------------------------------------------------------------------
+
+Save figure:
+
+```{r, eval = FALSE}
+ggsave(here("figures", "C2_Cheat_LCA_Plot.png"), dpi="retina", height=5, width=7, units="in")
+```
+
+------------------------------------------------------------------------
+
+## References
+
+Drew A. Linzer, Jeffrey B. Lewis (2011).
+poLCA: An R Package for Polytomous Variable Latent Class Analysis.
+Journal of Statistical Software, 42(10), 1-29.
+URL <http://www.jstatsoft.org/v42/i10/>.
+
+Hallquist, M. N., & Wiley, J. F.
+(2018).
+MplusAutomation: An R Package for Facilitating Large-Scale Latent Variable Analyses in Mplus.
+Structural equation modeling: a multidisciplinary journal, 25(4), 621-638.
+
+Miller, J. D., Hoffer, T., Suchner, R., Brown, K., & Nelson, C.
+(1992).
+LSAY codebook.
+Northern Illinois University.
+
+Muthén, B. O., Muthén, L. K., & Asparouhov, T.
+(2017).
+Regression and mediation analysis using Mplus.
+Los Angeles, CA: Muthén & Muthén.
+
+Muthén, L.K.
+and Muthén, B.O.
+(1998-2017).
+Mplus User's Guide.
+Eighth Edition.
+Los Angeles, CA: Muthén & Muthén
+
+Quirk, M., Furlong, M., Lilles, E., Felix, E., & Chin, J.
+(2011).
+Preliminary development of a kindergarten school readiness assessment for Latino students.
+Journal of Applied School Psychology, 27(1), 77-102.
+
+R Core Team (2017).
+R: A language and environment for statistical computing.
+R Foundation for Statistical Computing, Vienna, Austria.
+URL <http://www.R-project.org/>
+
+Wickham et al., (2019).
+Welcome to the tidyverse.
+Journal of Open Source Software, 4(43), 1686, <https://doi.org/10.21105/joss.01686>
+
+------------------------------------------------------------------------
+
+![](figures/UCSB_Navy_mark.png){width="75%"}

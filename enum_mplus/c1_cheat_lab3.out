@@ -1,0 +1,417 @@
+Mplus VERSION 8.8
+MUTHEN & MUTHEN
+01/20/2023   4:38 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+  Class 1
+  DATA:
+  FILE = "C:/Users/Dina Arch/Box/TA - ED 201/Labs/ucsb-mixture-lab3/enum_mplus/cheat_Lab3.da
+
+  VARIABLE:
+  NAMES = lieexam liepaper fraud copyexam;
+   MISSING=.;
+   categorical = lieexam-copyexam;
+  usevar = lieexam-copyexam;
+  classes = c(1);
+  ANALYSIS:
+  estimator = mlr;
+      type = mixture;
+      stseed = 5212020;
+      starts = 200 100;
+      processors = 10;
+  OUTPUT:
+  sampstat residual tech11 tech14;
+  PLOT:
+  type = plot3;
+      series = lieexam-copyexam(*);
+
+
+
+*** WARNING
+  Input line exceeded 90 characters. Some input may be truncated.
+  FILE = "C:/Users/Dina Arch/Box/TA - ED 201/Labs/ucsb-mixture-lab3/enum_mplus/cheat_Lab3.dat
+*** WARNING in DATA command
+  Statement not terminated by a semicolon:
+  FILE = "C:/Users/Dina Arch/Box/TA - ED 201/Labs/ucsb-mixture-lab3/enum_mplus/cheat_Lab3.dat
+*** WARNING in DATA command
+  Mismatched quotation in FILE option.  A quotation mark will be assumed at
+  the end of the line.
+*** WARNING in OUTPUT command
+  SAMPSTAT option is not available when all outcomes are censored, ordered
+  categorical, unordered categorical (nominal), count or continuous-time
+  survival variables.  Request for SAMPSTAT is ignored.
+*** WARNING in OUTPUT command
+  TECH11 option is not available for TYPE=MIXTURE with only one class.
+  Request for TECH11 is ignored.
+*** WARNING in OUTPUT command
+  TECH14 option is not available for TYPE=MIXTURE with only one class.
+  Request for TECH14 is ignored.
+   6 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+Class 1
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         319
+
+Number of dependent variables                                    4
+Number of independent variables                                  0
+Number of continuous latent variables                            0
+Number of categorical latent variables                           1
+
+Observed dependent variables
+
+  Binary and ordered categorical (ordinal)
+   LIEEXAM     LIEPAPER    FRAUD       COPYEXAM
+
+Categorical latent variables
+   C
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                 100
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-06
+    Relative loglikelihood change                        0.100D-06
+    Derivative                                           0.100D-05
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-05
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-05
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Random Starts Specifications
+  Number of initial stage random starts                        200
+  Number of final stage optimizations                          100
+  Number of initial stage iterations                            10
+  Initial stage convergence criterion                    0.100D+01
+  Random starts scale                                    0.500D+01
+  Random seed for generating random starts                 5212020
+Link                                                         LOGIT
+
+Input data file(s)
+  C:/Users/Dina Arch/Box/TA - ED 201/Labs/ucsb-mixture-lab3/enum_mplus/cheat_Lab
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             1
+     Number of y missing data patterns           0
+     Number of u missing data patterns           1
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+UNIVARIATE PROPORTIONS AND COUNTS FOR CATEGORICAL VARIABLES
+
+    LIEEXAM
+      Category 1    0.893          285.000
+      Category 2    0.107           34.000
+    LIEPAPER
+      Category 1    0.881          281.000
+      Category 2    0.119           38.000
+    FRAUD
+      Category 1    0.934          298.000
+      Category 2    0.066           21.000
+    COPYEXAM
+      Category 1    0.787          251.000
+      Category 2    0.213           68.000
+
+
+RANDOM STARTS RESULTS RANKED FROM THE BEST TO THE WORST LOGLIKELIHOOD VALUES
+
+Final stage loglikelihood values at local maxima, seeds, and initial stage start numbers:
+
+            -467.438  577060           141
+            -467.438  620971           161
+            -467.438  244138           81
+            -467.438  412995           41
+            -467.438  871562           21
+            -467.438  563310           181
+            -467.438  78482            101
+            -467.438  197516           121
+            -467.438  479689           61
+            -467.438  797869           1
+            -467.438  842290           3
+            -467.438  780992           15
+            -467.438  617686           128
+            -467.438  455568           188
+            -467.438  28330            64
+            -467.438  644706           186
+            -467.438  788113           129
+            -467.438  800364           130
+            -467.438  908542           32
+            -467.438  982849           182
+            -467.438  773851           90
+            -467.438  312522           65
+            -467.438  121445           131
+            -467.438  143763           132
+            -467.438  936962           66
+            -467.438  67763            133
+            -467.438  699949           134
+            -467.438  962234           7
+            -467.438  404908           33
+            -467.438  702322           67
+            -467.438  646817           135
+            -467.438  157123           170
+            -467.438  316783           169
+            -467.438  183994           168
+            -467.438  379475           136
+            -467.438  232280           166
+            -467.438  969423           165
+            -467.438  879810           164
+            -467.438  942707           68
+            -467.438  349272           16
+            -467.438  595967           69
+            -467.438  355607           34
+            -467.438  990072           70
+            -467.438  446866           142
+            -467.438  469686           8
+            -467.438  536931           17
+            -467.438  880473           35
+            -467.438  466611           71
+            -467.438  535046           143
+            -467.438  664163           144
+            -467.438  818887           72
+            -467.438  34292            150
+            -467.438  218371           145
+            -467.438  629544           146
+            -467.438  368906           36
+            -467.438  770987           147
+            -467.438  681792           148
+            -467.438  56178            149
+            -467.438  441167           18
+            -467.438  199881           37
+            -467.438  319454           38
+            -467.438  278930           4
+            -467.438  967388           39
+            -467.438  741261           162
+            -467.438  551464           40
+            -467.438  890057           163
+            -467.438  30501            82
+            -467.438  unperturbed      0
+            -467.438  425444           83
+            -467.438  406569           167
+            -467.438  8425             84
+            -467.438  861614           42
+            -467.438  161580           85
+            -467.438  372836           86
+            -467.438  350267           43
+            -467.438  70165            87
+            -467.438  355486           88
+            -467.438  794380           89
+            -467.438  859802           44
+            -467.438  70100            45
+            -467.438  48733            183
+            -467.438  852340           184
+            -467.438  723629           185
+            -467.438  314848           46
+            -467.438  959724           187
+            -467.438  175658           189
+            -467.438  28449            47
+            -467.438  484382           48
+            -467.438  944197           198
+            -467.438  786397           49
+            -467.438  609429           50
+            -467.438  828119           110
+            -467.438  366023           102
+            -467.438  897984           103
+            -467.438  107190           104
+            -467.438  416525           105
+            -467.438  869494           106
+            -467.438  9098             107
+            -467.438  316633           108
+            -467.438  240130           109
+
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                        4
+
+Loglikelihood
+
+          H0 Value                        -467.438
+          H0 Scaling Correction Factor      1.0000
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                     942.876
+          Bayesian (BIC)                   957.937
+          Sample-Size Adjusted BIC         945.250
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit for the Binary and Ordered Categorical
+(Ordinal) Outcomes
+
+          Pearson Chi-Square
+
+          Value                            136.342
+          Degrees of Freedom                    11
+          P-Value                           0.0000
+
+          Likelihood Ratio Chi-Square
+
+          Value                             62.586
+          Degrees of Freedom                    11
+          P-Value                           0.0000
+
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON THE ESTIMATED MODEL
+
+    Latent
+   Classes
+
+       1        319.00000          1.00000
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON ESTIMATED POSTERIOR PROBABILITIES
+
+    Latent
+   Classes
+
+       1        319.00000          1.00000
+
+
+FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
+BASED ON THEIR MOST LIKELY LATENT CLASS MEMBERSHIP
+
+Class Counts and Proportions
+
+    Latent
+   Classes
+
+       1              319          1.00000
+
+
+Average Latent Class Probabilities for Most Likely Latent Class Membership (Row)
+by Latent Class (Column)
+
+           1
+
+    1   1.000
+
+
+Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+           1
+
+    1   1.000
+
+
+Logits for the Classification Probabilities for the Most Likely Latent Class Membership (Column)
+by Latent Class (Row)
+
+              1
+
+    1      0.000
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Latent Class 1
+
+ Thresholds
+    LIEEXAM$1          2.126      0.181     11.718      0.000
+    LIEPAPER$1         2.001      0.173     11.576      0.000
+    FRAUD$1            2.653      0.226     11.749      0.000
+    COPYEXAM$1         1.306      0.137      9.553      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.300E+00
+       (ratio of smallest to largest eigenvalue)
+
+
+RESULTS IN PROBABILITY SCALE
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Latent Class 1
+
+ LIEEXAM
+    Category 1         0.893      0.017     51.710      0.000
+    Category 2         0.107      0.017      6.169      0.000
+ LIEPAPER
+    Category 1         0.881      0.018     48.569      0.000
+    Category 2         0.119      0.018      6.568      0.000
+ FRAUD
+    Category 1         0.934      0.014     67.281      0.000
+    Category 2         0.066      0.014      4.741      0.000
+ COPYEXAM
+    Category 1         0.787      0.023     34.315      0.000
+    Category 2         0.213      0.023      9.296      0.000
+
+
+RESIDUAL OUTPUT
+
+
+     RESIDUAL OUTPUT IS NOT AVAILABLE FOR THIS MODEL.  ADDITIONAL OUTPUT FOR
+     CATEGORICAL, COUNT, AND NOMINAL VARIABLES MAY BE AVAILABLE USING TECH10.
+
+
+PLOT INFORMATION
+
+The following plots are available:
+
+  Histograms (sample values)
+  Scatterplots (sample values)
+  Sample proportions and estimated probabilities
+
+     Beginning Time:  16:38:31
+        Ending Time:  16:38:35
+       Elapsed Time:  00:00:04
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2022 Muthen & Muthen
