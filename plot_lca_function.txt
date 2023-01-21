@@ -20,26 +20,37 @@ plot_data <- pp_plots %>%
   melt(id.vars = "param") %>% 
   mutate(param = fct_inorder(param))
 
+name <- model_name$input$title
 
 p <- plot_data %>%
-      ggplot(aes(
-        x = param,
-        y = value,
-        shape = variable,
-        colour = variable,
-        lty = variable,
-        group = variable
-      )) +
-      geom_point(size = 4) + geom_line(size = .8) +
-      scale_x_discrete("") +
-      scale_colour_grey(end = .5) +
-      labs(title = "LCA Probability Plot", y = "Probability") +
-      theme_cowplot() +
-      theme(text=element_text(family="Times", size=12),                                   
-        legend.key.width = unit(3, "line"),                                                    
-        legend.text = element_text(family="Times", size=12),                          
-        legend.title = element_blank(),                                                         
-        legend.position = "top")
-    p
-    return(p)
-  }
+  ggplot(
+    aes(
+      x = param,
+      y = value,
+      shape = variable,
+      colour = variable,
+      lty = variable,
+      group = variable
+    )
+  ) +
+  geom_point(size = 4) + geom_line() +
+  ylim(0,1) +
+  scale_x_discrete("") +
+  scale_colour_grey(end = .3) +
+  labs(title = glue("{name} Probability Plot"), y = "Probability") +
+  theme_cowplot() +
+  theme(
+    text = element_text(family = "serif", size = 12),
+    legend.text = element_text(family = "serif", size = 12),
+    legend.key.width = unit(3, "line"),
+    legend.title = element_blank(),
+    legend.position = "top",
+    axis.text.x = element_text(
+      angle = 45,
+      hjust = 1,
+      vjust = 1
+    )
+  )
+p
+return(p)
+}

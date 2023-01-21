@@ -1,11 +1,11 @@
 Mplus VERSION 8.8
 MUTHEN & MUTHEN
-01/20/2023   4:39 PM
+01/20/2023   5:43 PM
 
 INPUT INSTRUCTIONS
 
   TITLE:
-  Class 4
+  4-Class
   DATA:
   FILE = "C:/Users/Dina Arch/Box/TA - ED 201/Labs/ucsb-mixture-lab3/enum_mplus/cheat_Lab3.da
 
@@ -47,7 +47,7 @@ INPUT INSTRUCTIONS
 
 
 
-Class 4
+4-Class
 
 SUMMARY OF ANALYSIS
 
@@ -166,18 +166,20 @@ Final stage loglikelihood values at local maxima, seeds, and initial stage start
             -436.145  879810           164
             -436.145  74454            6
             -436.145  788113           129
+            -436.145  455568           188
             -436.145  921342           177
             -436.145  258034           79
             -436.146  818887           72
             -436.146  11224            173
             -436.146  446866           142
+            -436.146  577060           141
             -436.146  810469           2
             -436.187  441167           18
             -436.188  842290           3
             -436.190  154877           9
             -436.228  306755           123
 
-67 perturbed starting value run(s) did not converge or were rejected in the third stage.
+65 perturbed starting value run(s) did not converge or were rejected in the third stage.
 
 
 
@@ -193,7 +195,7 @@ RANDOM STARTS TO CHECK THAT THE BEST LOGLIKELIHOOD IS STILL OBTAINED AND REPLICA
      TRUSTWORTHY FOR SOME PARAMETERS DUE TO A NON-POSITIVE DEFINITE
      FIRST-ORDER DERIVATIVE PRODUCT MATRIX.  THIS MAY BE DUE TO THE STARTING
      VALUES BUT MAY ALSO BE AN INDICATION OF MODEL NONIDENTIFICATION.  THE
-     CONDITION NUMBER IS      -0.198D-16.  PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     CONDITION NUMBER IS      -0.167D-16.  PROBLEM INVOLVING THE FOLLOWING PARAMETER:
      Parameter 18, [ C#2 ]
 
      ONE OR MORE MULTINOMIAL LOGIT PARAMETERS WERE FIXED TO AVOID SINGULARITY
@@ -434,7 +436,7 @@ LATENT CLASS INDICATOR ODDS RATIOS FOR THE LATENT CLASSES
 Latent Class 1 Compared to Latent Class 2
 
  LIEEXAM
-    Category > 1       0.027      0.175      0.000   8821.016
+    Category > 1       0.027      0.175      0.000   8821.268
  LIEPAPER
     Category > 1       0.023      0.196      0.000  *********
  FRAUD
@@ -445,13 +447,13 @@ Latent Class 1 Compared to Latent Class 2
 Latent Class 1 Compared to Latent Class 3
 
  LIEEXAM
-    Category > 1       0.021      0.117      0.000   1287.674
+    Category > 1       0.021      0.117      0.000   1287.668
  LIEPAPER
     Category > 1       0.008      0.162      0.000  *********
  FRAUD
     Category > 1       0.080      8.694      0.000  *********
  COPYEXAM
-    Category > 1       0.433      2.297      0.000  14304.136
+    Category > 1       0.433      2.297      0.000  14304.478
 
 Latent Class 1 Compared to Latent Class 4
 
@@ -478,9 +480,9 @@ Latent Class 2 Compared to Latent Class 3
 Latent Class 2 Compared to Latent Class 4
 
  LIEEXAM
-    Category > 1      18.820    633.090      0.000  *********
+    Category > 1      18.820    633.091      0.000  *********
  LIEPAPER
-    Category > 1      57.588   4268.691      0.000  *********
+    Category > 1      57.588   4268.694      0.000  *********
  FRAUD
     Category > 1   *********      0.000  *********  *********
  COPYEXAM
@@ -489,13 +491,13 @@ Latent Class 2 Compared to Latent Class 4
 Latent Class 3 Compared to Latent Class 4
 
  LIEEXAM
-    Category > 1      24.434    648.277      0.000  *********
+    Category > 1      24.434    648.278      0.000  *********
  LIEPAPER
-    Category > 1     170.308   8974.892      0.000  *********
+    Category > 1     170.308   8974.899      0.000  *********
  FRAUD
     Category > 1       0.242      2.747      0.000  *********
  COPYEXAM
-    Category > 1       0.681      3.787      0.000  36589.266
+    Category > 1       0.681      3.787      0.000  36589.961
 
 
 RESIDUAL OUTPUT
@@ -520,12 +522,12 @@ TECHNICAL 11 OUTPUT
           Difference in the Number of Parameters                5
           Mean                                              1.333
           Standard Deviation                                2.466
-          P-Value                                          0.6906
+          P-Value                                          0.6907
 
      LO-MENDELL-RUBIN ADJUSTED LRT TEST
 
           Value                                             0.175
-          P-Value                                          0.6920
+          P-Value                                          0.6922
 
 
 TECHNICAL 14 OUTPUT
@@ -561,9 +563,9 @@ The following plots are available:
   Scatterplots (sample values)
   Sample proportions and estimated probabilities
 
-     Beginning Time:  16:39:04
-        Ending Time:  16:39:19
-       Elapsed Time:  00:00:15
+     Beginning Time:  17:43:59
+        Ending Time:  17:44:12
+       Elapsed Time:  00:00:13
 
 
 

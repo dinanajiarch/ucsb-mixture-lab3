@@ -1,11 +1,11 @@
 Mplus VERSION 8.8
 MUTHEN & MUTHEN
-01/20/2023   4:38 PM
+01/20/2023   5:43 PM
 
 INPUT INSTRUCTIONS
 
   TITLE:
-  Class 3
+  3-Class
   DATA:
   FILE = "C:/Users/Dina Arch/Box/TA - ED 201/Labs/ucsb-mixture-lab3/enum_mplus/cheat_Lab3.da
 
@@ -47,7 +47,7 @@ INPUT INSTRUCTIONS
 
 
 
-Class 3
+3-Class
 
 SUMMARY OF ANALYSIS
 
@@ -185,14 +185,13 @@ Final stage loglikelihood values at local maxima, seeds, and initial stage start
             -436.236  543868           175
             -436.236  687617           73
             -436.236  773851           90
-            -436.236  199881           37
             -436.236  143763           132
+            -436.236  199881           37
             -436.236  195050           120
             -436.236  312878           10
             -436.236  810469           2
             -436.236  258034           79
             -436.236  74454            6
-            -436.236  67763            133
             -436.450  921342           177
             -436.450  296202           14
             -437.296  989014           113
@@ -218,7 +217,7 @@ Final stage loglikelihood values at local maxima, seeds, and initial stage start
             -438.209  355607           34
             -438.348  595967           69
 
-26 perturbed starting value run(s) did not converge or were rejected in the third stage.
+27 perturbed starting value run(s) did not converge or were rejected in the third stage.
 
 
 
@@ -536,9 +535,9 @@ The following plots are available:
   Scatterplots (sample values)
   Sample proportions and estimated probabilities
 
-     Beginning Time:  16:38:46
-        Ending Time:  16:39:03
-       Elapsed Time:  00:00:17
+     Beginning Time:  17:43:43
+        Ending Time:  17:43:59
+       Elapsed Time:  00:00:16
 
 
 

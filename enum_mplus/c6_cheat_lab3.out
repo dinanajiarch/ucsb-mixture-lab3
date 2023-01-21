@@ -1,11 +1,11 @@
 Mplus VERSION 8.8
 MUTHEN & MUTHEN
-01/20/2023   4:39 PM
+01/20/2023   5:44 PM
 
 INPUT INSTRUCTIONS
 
   TITLE:
-  Class 6
+  6-Class
   DATA:
   FILE = "C:/Users/Dina Arch/Box/TA - ED 201/Labs/ucsb-mixture-lab3/enum_mplus/cheat_Lab3.da
 
@@ -47,7 +47,7 @@ INPUT INSTRUCTIONS
 
 
 
-Class 6
+6-Class
 
 SUMMARY OF ANALYSIS
 
@@ -774,8 +774,8 @@ The following plots are available:
   Scatterplots (sample values)
   Sample proportions and estimated probabilities
 
-     Beginning Time:  16:39:32
-        Ending Time:  16:39:43
+     Beginning Time:  17:44:26
+        Ending Time:  17:44:37
        Elapsed Time:  00:00:11
 
 

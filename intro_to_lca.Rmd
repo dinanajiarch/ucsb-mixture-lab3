@@ -142,7 +142,7 @@ This code uses the `mplusObject` function in the `MplusAutomation` package.
 lca_cheat_6  <- lapply(1:6, function(k) {
   lca_enum  <- mplusObject(
       
-    TITLE = glue("Class {k}"), 
+    TITLE = glue("{k}-Class"), 
   
     VARIABLE = glue(
     "categorical = lieexam-copyexam; 
