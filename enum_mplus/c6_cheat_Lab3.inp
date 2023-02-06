@@ -12,7 +12,6 @@ classes = c(6);
 ANALYSIS:
 estimator = mlr; 
     type = mixture;
-    stseed = 5212020;
     starts = 200 100; 
     processors = 10;
 OUTPUT:

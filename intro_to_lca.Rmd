@@ -152,7 +152,6 @@ lca_cheat_6  <- lapply(1:6, function(k) {
   ANALYSIS = 
    "estimator = mlr; 
     type = mixture;
-    stseed = 5212020;
     starts = 200 100; 
     processors = 10;",
   
@@ -437,11 +436,6 @@ Hallquist, M. N., & Wiley, J. F.
 MplusAutomation: An R Package for Facilitating Large-Scale Latent Variable Analyses in Mplus.
 Structural equation modeling: a multidisciplinary journal, 25(4), 621-638.
 
-Miller, J. D., Hoffer, T., Suchner, R., Brown, K., & Nelson, C.
-(1992).
-LSAY codebook.
-Northern Illinois University.
-
 Muthén, B. O., Muthén, L. K., & Asparouhov, T.
 (2017).
 Regression and mediation analysis using Mplus.
@@ -453,11 +447,6 @@ and Muthén, B.O.
 Mplus User's Guide.
 Eighth Edition.
 Los Angeles, CA: Muthén & Muthén
-
-Quirk, M., Furlong, M., Lilles, E., Felix, E., & Chin, J.
-(2011).
-Preliminary development of a kindergarten school readiness assessment for Latino students.
-Journal of Applied School Psychology, 27(1), 77-102.
 
 R Core Team (2017).
 R: A language and environment for statistical computing.
