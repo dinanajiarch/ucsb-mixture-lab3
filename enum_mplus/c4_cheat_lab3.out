@@ -1,6 +1,6 @@
 Mplus VERSION 8.8
 MUTHEN & MUTHEN
-02/06/2023   3:51 PM
+02/06/2023   3:53 PM
 
 INPUT INSTRUCTIONS
 
@@ -146,6 +146,7 @@ Final stage loglikelihood values at local maxima, seeds, and initial stage start
             -436.145  474909           146
             -436.145  272736           136
             -436.145  367806           106
+            -436.145  120210           181
             -436.145  162016           113
             -436.145  95035            190
             -436.145  82746            145
@@ -154,6 +155,8 @@ Final stage loglikelihood values at local maxima, seeds, and initial stage start
             -436.145  988420           1
             -436.145  548334           179
             -436.145  583504           18
+            -436.145  369966           163
+            -436.145  801672           99
             -436.145  521614           7
             -436.145  738240           63
             -436.145  687162           13
@@ -162,6 +165,7 @@ Final stage loglikelihood values at local maxima, seeds, and initial stage start
             -436.145  81727            195
             -436.145  416930           41
             -436.145  332150           72
+            -436.145  195759           37
             -436.145  356422           12
             -436.145  665244           3
             -436.145  911536           25
@@ -174,9 +178,10 @@ Final stage loglikelihood values at local maxima, seeds, and initial stage start
             -436.145  313198           6
             -436.146  562761           53
             -436.146  986119           156
+            -436.146  573704           58
             -436.149  183711           110
 
-68 perturbed starting value run(s) did not converge or were rejected in the third stage.
+63 perturbed starting value run(s) did not converge or were rejected in the third stage.
 
 
 
@@ -554,9 +559,9 @@ The following plots are available:
   Scatterplots (sample values)
   Sample proportions and estimated probabilities
 
-     Beginning Time:  15:51:04
-        Ending Time:  15:51:13
-       Elapsed Time:  00:00:09
+     Beginning Time:  15:53:58
+        Ending Time:  15:54:11
+       Elapsed Time:  00:00:13
 
 
 

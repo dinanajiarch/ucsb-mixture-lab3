@@ -153,6 +153,7 @@ lca_cheat_6  <- lapply(1:6, function(k) {
    "estimator = mlr; 
     type = mixture;
     starts = 200 100; 
+    stseed = 887676;
     processors = 10;",
   
   OUTPUT = "sampstat residual tech11 tech14;",
