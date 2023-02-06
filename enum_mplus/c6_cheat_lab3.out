@@ -1,6 +1,6 @@
 Mplus VERSION 8.8
 MUTHEN & MUTHEN
-02/06/2023   3:40 PM
+02/06/2023   3:51 PM
 
 INPUT INSTRUCTIONS
 
@@ -19,6 +19,7 @@ INPUT INSTRUCTIONS
   estimator = mlr;
       type = mixture;
       starts = 200 100;
+      stseed = 887676;
       processors = 10;
   OUTPUT:
   sampstat residual tech11 tech14;
@@ -102,7 +103,7 @@ Random Starts Specifications
   Number of initial stage iterations                            10
   Initial stage convergence criterion                    0.100D+01
   Random starts scale                                    0.500D+01
-  Random seed for generating random starts                       0
+  Random seed for generating random starts                  887676
 Link                                                         LOGIT
 
 Input data file(s)
@@ -142,78 +143,81 @@ RANDOM STARTS RESULTS RANKED FROM THE BEST TO THE WORST LOGLIKELIHOOD VALUES
 
 Final stage loglikelihood values at local maxima, seeds, and initial stage start numbers:
 
-            -436.145  458181           189
-            -436.145  608496           4
-            -436.145  68985            17
-            -436.145  127215           9
-            -436.145  264081           186
-            -436.145  12477            155
-            -436.145  476498           179
-            -436.145  915642           40
-            -436.145  100874           108
-            -436.145  354208           196
-            -436.145  966014           37
-            -436.145  814975           129
-            -436.145  107446           12
-            -436.145  903420           5
-            -436.145  297518           166
-            -436.145  950604           172
-            -436.145  928287           197
-            -436.145  533738           11
-            -436.145  967902           52
-            -436.145  654136           167
-            -436.145  569833           85
-            -436.145  645664           39
-            -436.145  535804           111
-            -436.145  247224           94
-            -436.145  783110           72
-            -436.145  292884           103
-            -436.145  414284           158
-            -436.145  570908           98
-            -436.145  570782           193
-            -436.145  136842           58
-            -436.145  960438           116
-            -436.145  150531           154
-            -436.145  131856           90
-            -436.145  340112           126
-            -436.145  526324           178
-            -436.145  284109           82
-            -436.145  152496           123
-            -436.145  788796           145
-            -436.145  70118            104
-            -436.145  407168           44
-            -436.145  957392           79
-            -436.145  751054           117
-            -436.145  784664           75
-            -436.145  285380           1
-            -436.145  481835           57
-            -436.145  341041           34
-            -436.145  813779           92
-            -436.145  603842           61
-            -436.145  860772           174
-            -436.145  153942           31
-            -436.145  76337            76
-            -436.145  268896           124
-            -436.145  931874           141
-            -436.145  46437            153
-            -436.145  232559           136
-            -436.145  392418           28
-            -436.145  903369           134
-            -436.145  606576           151
-            -436.145  314084           81
-            -436.145  383986           159
-            -436.145  313407           132
-            -436.145  190339           102
-            -436.145  207896           25
-            -436.145  618000           190
-            -436.145  93468            3
-            -436.145  263268           165
-            -436.145  437181           135
-            -436.145  565819           65
-            -436.145  253358           2
-            -436.145  27071            15
+            -436.145  44340            55
+            -436.145  356422           12
+            -436.145  82746            145
+            -436.145  689880           56
+            -436.145  321046           17
+            -436.145  784159           76
+            -436.145  272736           136
+            -436.145  534590           157
+            -436.145  661379           128
+            -436.145  583504           18
+            -436.145  861001           43
+            -436.145  874104           86
+            -436.145  313198           6
+            -436.145  784412           196
+            -436.145  528592           159
+            -436.145  942946           143
+            -436.145  959764           27
+            -436.145  801672           99
+            -436.145  319098           68
+            -436.145  639361           171
+            -436.145  207770           82
+            -436.145  574496           38
+            -436.145  65132            132
+            -436.145  229758           28
+            -436.145  890125           31
+            -436.145  911536           25
+            -436.145  997511           15
+            -436.145  66757            67
+            -436.145  642798           83
+            -436.145  785532           126
+            -436.145  472212           11
+            -436.145  395016           131
+            -436.145  898503           158
+            -436.145  493704           165
+            -436.145  120210           181
+            -436.145  738240           63
+            -436.145  417744           5
+            -436.145  332150           72
+            -436.145  406058           96
+            -436.145  999066           124
+            -436.145  887769           57
+            -436.145  78052            49
+            -436.145  619370           59
+            -436.145  21124            32
+            -436.145  443762           44
+            -436.145  271184           137
+            -436.145  649419           151
+            -436.145  489656           162
+            -436.145  788586           19
+            -436.145  679994           73
+            -436.145  509104           8
+            -436.145  562761           53
+            -436.145  268896           4
+            -436.145  369966           163
+            -436.145  734722           71
+            -436.145  162016           113
+            -436.145  122085           80
+            -436.145  532067           33
+            -436.145  559948           89
+            -436.145  671930           148
+            -436.145  38015            40
+            -436.145  143052           191
+            -436.145  573704           58
+            -436.145  543664           36
+            -436.145  608124           119
+            -436.145  876345           115
+            -436.145  756451           198
+            -436.145  653669           129
+            -436.145  766651           180
+            -436.145  689606           85
+            -436.145  667872           123
+            -436.145  892787           178
+            -436.145  438389           167
 
-30 perturbed starting value run(s) did not converge or were rejected in the third stage.
+27 perturbed starting value run(s) did not converge or were rejected in the third stage.
 
 
 
@@ -226,11 +230,11 @@ RANDOM STARTS TO CHECK THAT THE BEST LOGLIKELIHOOD IS STILL OBTAINED AND REPLICA
      DISTRIBUTION OF THE CATEGORICAL VARIABLES IN THE MODEL.
      THE FOLLOWING PARAMETERS WERE FIXED:
      Parameter 16, %C#4%: [ COPYEXAM$1 ]
-     Parameter 17, %C#5%: [ LIEEXAM$1 ]
      Parameter 18, %C#5%: [ LIEPAPER$1 ]
      Parameter 19, %C#5%: [ FRAUD$1 ]
      Parameter 20, %C#5%: [ COPYEXAM$1 ]
      Parameter 21, %C#6%: [ LIEEXAM$1 ]
+     Parameter 22, %C#6%: [ LIEPAPER$1 ]
      Parameter 23, %C#6%: [ FRAUD$1 ]
      Parameter 24, %C#6%: [ COPYEXAM$1 ]
      Parameter 25, [ C#1 ]
@@ -238,7 +242,7 @@ RANDOM STARTS TO CHECK THAT THE BEST LOGLIKELIHOOD IS STILL OBTAINED AND REPLICA
      Parameter 27, [ C#3 ]
      Parameter 28, [ C#4 ]
      Parameter 29, [ C#5 ]
-     Parameter 22, %C#6%: [ LIEPAPER$1 ]
+     Parameter 17, %C#5%: [ LIEEXAM$1 ]
 
 
 THE MODEL ESTIMATION TERMINATED NORMALLY
@@ -274,12 +278,12 @@ BASED ON THE ESTIMATED MODEL
     Latent
    Classes
 
-       1         16.13271          0.05057
-       2         13.48431          0.04227
-       3         81.71834          0.25617
-       4         16.22526          0.05086
-       5          7.75207          0.02430
-       6        183.68730          0.57582
+       1         15.69967          0.04922
+       2         57.67002          0.18078
+       3          7.95003          0.02492
+       4         20.16879          0.06323
+       5        198.50970          0.62229
+       6         19.00180          0.05957
 
 
 FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
@@ -288,12 +292,12 @@ BASED ON ESTIMATED POSTERIOR PROBABILITIES
     Latent
    Classes
 
-       1         16.13271          0.05057
-       2         13.48431          0.04227
-       3         81.71834          0.25617
-       4         16.22526          0.05086
-       5          7.75207          0.02430
-       6        183.68730          0.57582
+       1         15.69967          0.04922
+       2         57.67002          0.18078
+       3          7.95003          0.02492
+       4         20.16879          0.06323
+       5        198.50970          0.62229
+       6         19.00180          0.05957
 
 
 FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
@@ -304,17 +308,17 @@ Class Counts and Proportions
     Latent
    Classes
 
-       1               15          0.04702
-       2                9          0.02821
-       3               55          0.17241
-       4                0          0.00000
-       5               13          0.04075
-       6              227          0.71160
+       1               16          0.05016
+       2               53          0.16614
+       3                6          0.01881
+       4               12          0.03762
+       5              230          0.72100
+       6                2          0.00627
 
 
 CLASSIFICATION QUALITY
 
-     Entropy                         0.622
+     Entropy                         0.617
 
 
 Average Latent Class Probabilities for Most Likely Latent Class Membership (Row)
@@ -322,12 +326,12 @@ by Latent Class (Column)
 
            1        2        3        4        5        6
 
-    1   0.915    0.063    0.005    0.012    0.001    0.004
-    2   0.060    0.822    0.055    0.037    0.003    0.023
-    3   0.002    0.057    0.826    0.005    0.008    0.101
-    4   0.000    0.000    0.000    0.000    0.000    0.000
-    5   0.111    0.074    0.082    0.223    0.432    0.077
-    6   0.001    0.005    0.153    0.055    0.007    0.779
+    1   0.844    0.012    0.017    0.003    0.014    0.111
+    2   0.009    0.704    0.010    0.079    0.160    0.037
+    3   0.046    0.008    0.858    0.051    0.000    0.036
+    4   0.000    0.049    0.151    0.622    0.059    0.119
+    5   0.006    0.085    0.000    0.033    0.822    0.054
+    6   0.045    0.013    0.083    0.270    0.024    0.564
 
 
 Classification Probabilities for the Most Likely Latent Class Membership (Column)
@@ -335,12 +339,12 @@ by Latent Class (Row)
 
            1        2        3        4        5        6
 
-    1   0.851    0.034    0.006    0.000    0.090    0.020
-    2   0.070    0.548    0.234    0.000    0.072    0.076
-    3   0.001    0.006    0.556    0.000    0.013    0.424
-    4   0.011    0.021    0.018    0.000    0.179    0.772
-    5   0.002    0.004    0.059    0.000    0.725    0.210
-    6   0.000    0.001    0.030    0.000    0.005    0.963
+    1   0.860    0.032    0.018    0.000    0.085    0.006
+    2   0.003    0.647    0.001    0.010    0.338    0.000
+    3   0.034    0.067    0.647    0.228    0.003    0.021
+    4   0.002    0.209    0.015    0.370    0.377    0.027
+    5   0.001    0.043    0.000    0.004    0.952    0.000
+    6   0.093    0.104    0.011    0.075    0.657    0.059
 
 
 Logits for the Classification Probabilities for the Most Likely Latent Class Membership (Column)
@@ -348,12 +352,12 @@ by Latent Class (Row)
 
               1        2        3        4        5        6
 
-    1      3.753    0.520   -1.176   -9.901    1.503    0.000
-    2     -0.086    1.972    1.119  -11.243   -0.063    0.000
-    3     -6.083   -4.256    0.272  -12.957   -3.482    0.000
-    4     -4.242   -3.616   -3.784  -13.556   -1.462    0.000
-    5     -4.697   -3.963   -1.271  -12.256    1.238    0.000
-    6     -8.017   -6.757   -3.459  -13.778   -5.176    0.000
+    1      5.009    1.703    1.115   -3.053    2.698    0.000
+    2      2.035    7.279    0.679    3.127    6.630    0.000
+    3      0.474    1.161    3.429    2.383   -1.864    0.000
+    4     -2.541    2.052   -0.566    2.625    2.643    0.000
+    5      1.532    5.161   -3.088    2.670    8.266    0.000
+    6      0.451    0.562   -1.642    0.239    2.404    0.000
 
 
 MODEL RESULTS
@@ -364,64 +368,64 @@ MODEL RESULTS
 Latent Class 1
 
  Thresholds
-    LIEEXAM$1         -3.588     64.278     -0.056      0.955
-    LIEPAPER$1        -2.250     19.059     -0.118      0.906
-    FRAUD$1            3.358      5.465      0.614      0.539
-    COPYEXAM$1         1.176      0.873      1.347      0.178
+    LIEEXAM$1         -2.704      6.610     -0.409      0.682
+    LIEPAPER$1        -2.644      5.638     -0.469      0.639
+    FRAUD$1            2.664     15.509      0.172      0.864
+    COPYEXAM$1         0.995      4.519      0.220      0.826
 
 Latent Class 2
 
  Thresholds
-    LIEEXAM$1         -0.067      1.392     -0.048      0.962
-    LIEPAPER$1         0.023      1.287      0.018      0.986
-    FRAUD$1           -0.973      2.009     -0.484      0.628
-    COPYEXAM$1        -1.119      2.326     -0.481      0.631
+    LIEEXAM$1          2.988     15.006      0.199      0.842
+    LIEPAPER$1         2.560      9.124      0.281      0.779
+    FRAUD$1            4.452     17.976      0.248      0.804
+    COPYEXAM$1        -0.649      2.556     -0.254      0.800
 
 Latent Class 3
 
  Thresholds
-    LIEEXAM$1          4.179     11.712      0.357      0.721
-    LIEPAPER$1         2.601      2.019      1.288      0.198
-    FRAUD$1            2.552      1.279      1.995      0.046
-    COPYEXAM$1        -0.272      0.445     -0.611      0.541
+    LIEEXAM$1         -0.020      2.100     -0.010      0.992
+    LIEPAPER$1         0.029      2.016      0.014      0.988
+    FRAUD$1           -2.271    102.810     -0.022      0.982
+    COPYEXAM$1        -3.025    132.244     -0.023      0.982
 
 Latent Class 4
 
  Thresholds
-    LIEEXAM$1          1.343      5.282      0.254      0.799
-    LIEPAPER$1         2.781     22.048      0.126      0.900
-    FRAUD$1            2.416      4.929      0.490      0.624
-    COPYEXAM$1         3.784      0.000    999.000    999.000
+    LIEEXAM$1          3.320     60.385      0.055      0.956
+    LIEPAPER$1         2.571     25.647      0.100      0.920
+    FRAUD$1            0.352     10.040      0.035      0.972
+    COPYEXAM$1         0.591      0.000    999.000    999.000
 
 Latent Class 5
 
  Thresholds
-    LIEEXAM$1         -0.999      0.000    999.000    999.000
-    LIEPAPER$1         5.935      0.000    999.000    999.000
-    FRAUD$1            5.205      0.000    999.000    999.000
-    COPYEXAM$1         1.271      0.000    999.000    999.000
+    LIEEXAM$1          3.627      0.000    999.000    999.000
+    LIEPAPER$1         3.084      0.000    999.000    999.000
+    FRAUD$1            5.570      0.000    999.000    999.000
+    COPYEXAM$1         3.105      0.000    999.000    999.000
 
 Latent Class 6
 
  Thresholds
-    LIEEXAM$1          5.132      0.000    999.000    999.000
-    LIEPAPER$1         2.841      0.000    999.000    999.000
-    FRAUD$1            3.974      0.000    999.000    999.000
-    COPYEXAM$1         3.459      0.000    999.000    999.000
+    LIEEXAM$1          0.618      0.000    999.000    999.000
+    LIEPAPER$1         0.985      0.000    999.000    999.000
+    FRAUD$1            1.664      0.000    999.000    999.000
+    COPYEXAM$1         1.841      0.000    999.000    999.000
 
 Categorical Latent Variables
 
  Means
-    C#1               -2.432      0.000    999.000    999.000
-    C#2               -2.612      0.000    999.000    999.000
-    C#3               -0.810      0.000    999.000    999.000
-    C#4               -2.427      0.000    999.000    999.000
-    C#5               -3.165      0.000    999.000    999.000
+    C#1               -0.191      0.000    999.000    999.000
+    C#2                1.110      0.000    999.000    999.000
+    C#3               -0.871      0.000    999.000    999.000
+    C#4                0.060      0.000    999.000    999.000
+    C#5                2.346      0.000    999.000    999.000
 
 
 QUALITY OF NUMERICAL RESULTS
 
-     Condition Number for the Information Matrix              0.217E-04
+     Condition Number for the Information Matrix              0.779E-05
        (ratio of smallest to largest eigenvalue)
 
 
@@ -433,92 +437,92 @@ RESULTS IN PROBABILITY SCALE
 Latent Class 1
 
  LIEEXAM
-    Category 1         0.027      1.683      0.016      0.987
-    Category 2         0.973      1.683      0.578      0.563
+    Category 1         0.063      0.389      0.161      0.872
+    Category 2         0.937      0.389      2.412      0.016
  LIEPAPER
-    Category 1         0.095      1.644      0.058      0.954
-    Category 2         0.905      1.644      0.550      0.582
+    Category 1         0.066      0.349      0.190      0.849
+    Category 2         0.934      0.349      2.673      0.008
  FRAUD
-    Category 1         0.966      0.178      5.441      0.000
-    Category 2         0.034      0.178      0.189      0.850
+    Category 1         0.935      0.944      0.990      0.322
+    Category 2         0.065      0.944      0.069      0.945
  COPYEXAM
-    Category 1         0.764      0.157      4.858      0.000
-    Category 2         0.236      0.157      1.498      0.134
+    Category 1         0.730      0.890      0.820      0.412
+    Category 2         0.270      0.890      0.303      0.762
 
 Latent Class 2
 
  LIEEXAM
-    Category 1         0.483      0.347      1.391      0.164
-    Category 2         0.517      0.347      1.487      0.137
+    Category 1         0.952      0.685      1.389      0.165
+    Category 2         0.048      0.685      0.070      0.944
  LIEPAPER
-    Category 1         0.506      0.322      1.572      0.116
-    Category 2         0.494      0.322      1.536      0.125
+    Category 1         0.928      0.608      1.527      0.127
+    Category 2         0.072      0.608      0.118      0.906
  FRAUD
-    Category 1         0.274      0.400      0.686      0.493
-    Category 2         0.726      0.400      1.815      0.069
+    Category 1         0.988      0.205      4.827      0.000
+    Category 2         0.012      0.205      0.056      0.955
  COPYEXAM
-    Category 1         0.246      0.432      0.570      0.568
-    Category 2         0.754      0.432      1.746      0.081
+    Category 1         0.343      0.576      0.596      0.551
+    Category 2         0.657      0.576      1.139      0.255
 
 Latent Class 3
 
  LIEEXAM
-    Category 1         0.985      0.174      5.660      0.000
-    Category 2         0.015      0.174      0.087      0.931
+    Category 1         0.495      0.525      0.943      0.346
+    Category 2         0.505      0.525      0.962      0.336
  LIEPAPER
-    Category 1         0.931      0.130      7.170      0.000
-    Category 2         0.069      0.130      0.532      0.595
+    Category 1         0.507      0.504      1.007      0.314
+    Category 2         0.493      0.504      0.978      0.328
  FRAUD
-    Category 1         0.928      0.086     10.810      0.000
-    Category 2         0.072      0.086      0.843      0.399
+    Category 1         0.094      8.720      0.011      0.991
+    Category 2         0.906      8.720      0.104      0.917
  COPYEXAM
-    Category 1         0.433      0.109      3.962      0.000
-    Category 2         0.567      0.109      5.198      0.000
+    Category 1         0.046      5.841      0.008      0.994
+    Category 2         0.954      5.841      0.163      0.870
 
 Latent Class 4
 
  LIEEXAM
-    Category 1         0.793      0.867      0.915      0.360
-    Category 2         0.207      0.867      0.239      0.811
+    Category 1         0.965      2.034      0.475      0.635
+    Category 2         0.035      2.034      0.017      0.986
  LIEPAPER
-    Category 1         0.942      1.212      0.777      0.437
-    Category 2         0.058      1.212      0.048      0.962
+    Category 1         0.929      1.692      0.549      0.583
+    Category 2         0.071      1.692      0.042      0.967
  FRAUD
-    Category 1         0.918      0.371      2.476      0.013
-    Category 2         0.082      0.371      0.221      0.825
+    Category 1         0.587      2.434      0.241      0.809
+    Category 2         0.413      2.434      0.170      0.865
  COPYEXAM
-    Category 1         0.978      0.000      0.000      1.000
-    Category 2         0.022      0.000      0.000      1.000
+    Category 1         0.643      0.000      0.000      1.000
+    Category 2         0.357      0.000      0.000      1.000
 
 Latent Class 5
 
  LIEEXAM
-    Category 1         0.269      0.000      0.000      1.000
-    Category 2         0.731      0.000      0.000      1.000
+    Category 1         0.974      0.000      0.000      1.000
+    Category 2         0.026      0.000      0.000      1.000
  LIEPAPER
-    Category 1         0.997      0.000      0.000      1.000
-    Category 2         0.003      0.000      0.000      1.000
+    Category 1         0.956      0.000      0.000      1.000
+    Category 2         0.044      0.000      0.000      1.000
  FRAUD
-    Category 1         0.995      0.000      0.000      1.000
-    Category 2         0.005      0.000      0.000      1.000
+    Category 1         0.996      0.000      0.000      1.000
+    Category 2         0.004      0.000      0.000      1.000
  COPYEXAM
-    Category 1         0.781      0.000      0.000      1.000
-    Category 2         0.219      0.000      0.000      1.000
+    Category 1         0.957      0.000      0.000      1.000
+    Category 2         0.043      0.000      0.000      1.000
 
 Latent Class 6
 
  LIEEXAM
-    Category 1         0.994      0.000      0.000      1.000
-    Category 2         0.006      0.000      0.000      1.000
+    Category 1         0.650      0.000      0.000      1.000
+    Category 2         0.350      0.000      0.000      1.000
  LIEPAPER
-    Category 1         0.945      0.000      0.000      1.000
-    Category 2         0.055      0.000      0.000      1.000
+    Category 1         0.728      0.000      0.000      1.000
+    Category 2         0.272      0.000      0.000      1.000
  FRAUD
-    Category 1         0.982      0.000      0.000      1.000
-    Category 2         0.018      0.000      0.000      1.000
+    Category 1         0.841      0.000      0.000      1.000
+    Category 2         0.159      0.000      0.000      1.000
  COPYEXAM
-    Category 1         0.970      0.000      0.000      1.000
-    Category 2         0.030      0.000      0.000      1.000
+    Category 1         0.863      0.000      0.000      1.000
+    Category 2         0.137      0.000      0.000      1.000
 
 
 LATENT CLASS INDICATOR ODDS RATIOS FOR THE LATENT CLASSES
@@ -529,167 +533,167 @@ LATENT CLASS INDICATOR ODDS RATIOS FOR THE LATENT CLASSES
 Latent Class 1 Compared to Latent Class 2
 
  LIEEXAM
-    Category > 1      33.815   2176.946      0.000  *********
+    Category > 1     296.510   4242.979      0.000  *********
  LIEPAPER
-    Category > 1       9.709    179.778      0.000  *********
+    Category > 1     182.010   2090.321      0.000  *********
  FRAUD
-    Category > 1       0.013      0.087      0.000   5310.419
+    Category > 1       5.976    103.745      0.000  *********
  COPYEXAM
-    Category > 1       0.101      0.247      0.001     12.340
+    Category > 1       0.193      0.422      0.003     13.983
 
 Latent Class 1 Compared to Latent Class 3
 
  LIEEXAM
-    Category > 1    2360.257  *********      0.000  *********
+    Category > 1      14.642    109.288      0.000  *********
  LIEPAPER
-    Category > 1     127.820   2669.946      0.000  *********
+    Category > 1      14.487     84.679      0.000  *********
  FRAUD
-    Category > 1       0.446      2.791      0.000  93782.922
+    Category > 1       0.007      0.850      0.000  *********
  COPYEXAM
-    Category > 1       0.235      0.243      0.031      1.785
+    Category > 1       0.018      2.454      0.000  *********
 
 Latent Class 1 Compared to Latent Class 4
 
  LIEEXAM
-    Category > 1     138.521   9573.598      0.000  *********
+    Category > 1     413.189  26150.750      0.000  *********
  LIEPAPER
-    Category > 1     153.013   6207.763      0.000  *********
+    Category > 1     184.098   4750.312      0.000  *********
  FRAUD
-    Category > 1       0.390      1.786      0.000   3095.004
+    Category > 1       0.099      0.588      0.000  11263.298
  COPYEXAM
-    Category > 1      13.567     11.849      2.449     75.147
+    Category > 1       0.667      3.015      0.000   4685.521
 
 Latent Class 1 Compared to Latent Class 5
 
  LIEEXAM
-    Category > 1      13.319    856.091      0.000  *********
+    Category > 1     561.721   3712.996      0.001  *********
  LIEPAPER
-    Category > 1    3586.236  68349.164      0.000  *********
+    Category > 1     307.425   1733.318      0.005  *********
  FRAUD
-    Category > 1       6.340     34.647      0.000  *********
+    Category > 1      18.279    283.494      0.000  *********
  COPYEXAM
-    Category > 1       1.099      0.960      0.198      6.087
+    Category > 1       8.246     37.263      0.001  57913.137
 
 Latent Class 1 Compared to Latent Class 6
 
  LIEEXAM
-    Category > 1    6125.670  *********      0.000  *********
+    Category > 1      27.708    183.154      0.000  *********
  LIEPAPER
-    Category > 1     162.510   3097.235      0.000  *********
+    Category > 1      37.690    212.505      0.001  *********
  FRAUD
-    Category > 1       1.851     10.116      0.000  83046.195
+    Category > 1       0.368      5.703      0.000  *********
  COPYEXAM
-    Category > 1       9.806      8.565      1.770     54.318
+    Category > 1       2.330     10.531      0.000  16367.071
 
 Latent Class 2 Compared to Latent Class 3
 
  LIEEXAM
-    Category > 1      69.800    826.288      0.000  *********
+    Category > 1       0.049      0.822      0.000  *********
  LIEPAPER
-    Category > 1      13.166     37.844      0.047   3683.032
+    Category > 1       0.080      0.856      0.000  *********
  FRAUD
-    Category > 1      33.954     85.083      0.250   4612.056
+    Category > 1       0.001      0.136      0.000  *********
  COPYEXAM
-    Category > 1       2.332      6.093      0.014    390.530
+    Category > 1       0.093     12.517      0.000  *********
 
 Latent Class 2 Compared to Latent Class 4
 
  LIEEXAM
-    Category > 1       4.096     23.083      0.000  *********
+    Category > 1       1.394    104.900      0.000  *********
  LIEPAPER
-    Category > 1      15.761    358.588      0.000  *********
+    Category > 1       1.011     35.088      0.000  *********
  FRAUD
-    Category > 1      29.658    176.555      0.000  *********
+    Category > 1       0.017      0.283      0.000  *********
  COPYEXAM
-    Category > 1     134.640    313.157      1.410  12853.022
+    Category > 1       3.453      8.827      0.023    517.991
 
 Latent Class 2 Compared to Latent Class 5
 
  LIEEXAM
-    Category > 1       0.394      0.548      0.026      6.023
+    Category > 1       1.894     28.428      0.000  *********
  LIEPAPER
-    Category > 1     369.388    475.392     29.648   4602.302
+    Category > 1       1.689     15.411      0.000  *********
  FRAUD
-    Category > 1     482.178    968.697      9.400  24734.576
+    Category > 1       3.059     54.988      0.000  *********
  COPYEXAM
-    Category > 1      10.905     25.364      0.114   1041.036
+    Category > 1      42.678    109.107      0.284   6402.388
 
 Latent Class 2 Compared to Latent Class 6
 
  LIEEXAM
-    Category > 1     181.155    252.078     11.846   2770.269
+    Category > 1       0.093      1.402      0.000  *********
  LIEPAPER
-    Category > 1      16.739     21.542      1.343    208.553
+    Category > 1       0.207      1.889      0.000  *********
  FRAUD
-    Category > 1     140.786    282.839      2.744   7221.962
+    Category > 1       0.062      1.106      0.000  *********
  COPYEXAM
-    Category > 1      97.320    226.356      1.019   9290.408
+    Category > 1      12.061     30.835      0.080   1809.406
 
 Latent Class 3 Compared to Latent Class 4
 
  LIEEXAM
-    Category > 1       0.059      0.464      0.000  *********
+    Category > 1      28.218   1661.353      0.000  *********
  LIEPAPER
-    Category > 1       1.197     24.485      0.000  *********
+    Category > 1      12.708    307.398      0.000  *********
  FRAUD
-    Category > 1       0.873      5.126      0.000  86325.562
+    Category > 1      13.777   1552.150      0.000  *********
  COPYEXAM
-    Category > 1      57.728     25.676     24.143    138.034
+    Category > 1      37.170   4915.537      0.000  *********
 
 Latent Class 3 Compared to Latent Class 5
 
  LIEEXAM
-    Category > 1       0.006      0.066      0.000  *********
+    Category > 1      38.362     80.565      0.626   2352.607
  LIEPAPER
-    Category > 1      28.057     56.646      0.536   1467.658
+    Category > 1      21.221     42.783      0.408   1103.842
  FRAUD
-    Category > 1      14.201     18.167      1.157    174.286
+    Category > 1    2541.667  *********      0.000  *********
  COPYEXAM
-    Category > 1       4.676      2.080      1.955     11.180
+    Category > 1     459.424  60756.203      0.000  *********
 
 Latent Class 3 Compared to Latent Class 6
 
  LIEEXAM
-    Category > 1       2.595     30.396      0.000  *********
+    Category > 1       1.892      3.974      0.031    116.049
  LIEPAPER
-    Category > 1       1.271      2.567      0.024     66.507
+    Category > 1       2.602      5.245      0.050    135.331
  FRAUD
-    Category > 1       4.146      5.304      0.338     50.888
+    Category > 1      51.130   5256.681      0.000  *********
  COPYEXAM
-    Category > 1      41.727     18.559     17.451     99.774
+    Category > 1     129.840  17170.561      0.000  *********
 
 Latent Class 4 Compared to Latent Class 5
 
  LIEEXAM
-    Category > 1       0.096      0.508      0.000   3013.492
+    Category > 1       1.359     82.092      0.000  *********
  LIEPAPER
-    Category > 1      23.437    516.757      0.000  *********
+    Category > 1       1.670     42.828      0.000  *********
  FRAUD
-    Category > 1      16.258     80.132      0.001  *********
+    Category > 1     184.484   1852.259      0.000  *********
  COPYEXAM
-    Category > 1       0.081      0.000      0.081      0.081
+    Category > 1      12.360      0.000     12.360     12.360
 
 Latent Class 4 Compared to Latent Class 6
 
  LIEEXAM
-    Category > 1      44.222    233.580      0.001  *********
+    Category > 1       0.067      4.049      0.000  *********
  LIEPAPER
-    Category > 1       1.062     23.417      0.000  *********
+    Category > 1       0.205      5.251      0.000  *********
  FRAUD
-    Category > 1       4.747     23.397      0.000  74457.742
+    Category > 1       3.711     37.261      0.000  *********
  COPYEXAM
-    Category > 1       0.723      0.000      0.723      0.723
+    Category > 1       3.493      0.000      3.493      3.493
 
 Latent Class 5 Compared to Latent Class 6
 
  LIEEXAM
-    Category > 1     459.935      0.000    459.935    459.935
+    Category > 1       0.049      0.000      0.049      0.049
  LIEPAPER
-    Category > 1       0.045      0.000      0.045      0.045
+    Category > 1       0.123      0.000      0.123      0.123
  FRAUD
-    Category > 1       0.292      0.000      0.292      0.292
+    Category > 1       0.020      0.000      0.020      0.020
  COPYEXAM
-    Category > 1       8.924      0.000      8.924      8.924
+    Category > 1       0.283      0.000      0.283      0.283
 
 
 RESIDUAL OUTPUT
@@ -712,14 +716,14 @@ TECHNICAL 11 OUTPUT
           H0 Loglikelihood Value                         -436.145
           2 Times the Loglikelihood Difference              0.000
           Difference in the Number of Parameters                5
-          Mean                                             -0.005
-          Standard Deviation                                0.012
-          P-Value                                          0.4253
+          Mean                                              0.000
+          Standard Deviation                                0.002
+          P-Value                                          0.4962
 
      LO-MENDELL-RUBIN ADJUSTED LRT TEST
 
           Value                                             0.000
-          P-Value                                          0.4253
+          P-Value                                          0.4962
 
 
 TECHNICAL 14 OUTPUT
@@ -746,6 +750,10 @@ TECHNICAL 14 OUTPUT
           Approximate P-Value                              1.0000
           Successful Bootstrap Draws                            2
 
+     WARNING:  1 OUT OF 3 BOOTSTRAP DRAWS DID NOT CONVERGE.
+     INCREASE THE NUMBER OF RANDOM STARTS USING THE LRTSTARTS OPTION.
+
+
 
 PLOT INFORMATION
 
@@ -755,9 +763,9 @@ The following plots are available:
   Scatterplots (sample values)
   Sample proportions and estimated probabilities
 
-     Beginning Time:  15:40:25
-        Ending Time:  15:40:41
-       Elapsed Time:  00:00:16
+     Beginning Time:  15:51:27
+        Ending Time:  15:51:40
+       Elapsed Time:  00:00:13
 
 
 
