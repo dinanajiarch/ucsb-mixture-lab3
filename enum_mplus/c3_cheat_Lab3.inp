@@ -1,8 +1,8 @@
 TITLE:
 3-Class
 DATA:
-FILE = "C:/Users/Dina Arch/Box/TA - ED 201/Labs/ucsb-mixture-lab3/enum_mplus/cheat_Lab3.dat";
- 
+FILE = "C:/Users/dnajiarch/Box/TA - ED 201/Labs/ucsb-mixture-lab3/
+enum_mplus/cheat_Lab3.dat"; 
 VARIABLE:
 NAMES = lieexam liepaper fraud copyexam; 
  MISSING=.;
@@ -13,10 +13,9 @@ ANALYSIS:
 estimator = mlr; 
     type = mixture;
     starts = 200 100; 
-    stseed = 887676;
     processors = 10;
 OUTPUT:
-sampstat residual tech11 tech14;
+sampstat residual tech11 tech14 svalues;
 PLOT:
 type = plot3; 
     series = lieexam-copyexam(*);

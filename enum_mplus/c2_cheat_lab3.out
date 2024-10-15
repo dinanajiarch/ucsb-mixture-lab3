@@ -1,14 +1,14 @@
-Mplus VERSION 8.8
+Mplus VERSION 8.11
 MUTHEN & MUTHEN
-02/06/2023   3:53 PM
+10/15/2024   2:10 PM
 
 INPUT INSTRUCTIONS
 
   TITLE:
   2-Class
   DATA:
-  FILE = "C:/Users/Dina Arch/Box/TA - ED 201/Labs/ucsb-mixture-lab3/enum_mplus/cheat_Lab3.da
-
+  FILE = "C:/Users/dnajiarch/Box/TA - ED 201/Labs/ucsb-mixture-lab3/
+  enum_mplus/cheat_Lab3.dat";
   VARIABLE:
   NAMES = lieexam liepaper fraud copyexam;
    MISSING=.;
@@ -19,30 +19,20 @@ INPUT INSTRUCTIONS
   estimator = mlr;
       type = mixture;
       starts = 200 100;
-      stseed = 887676;
       processors = 10;
   OUTPUT:
-  sampstat residual tech11 tech14;
+  sampstat residual tech11 tech14 svalues;
   PLOT:
   type = plot3;
       series = lieexam-copyexam(*);
 
 
 
-*** WARNING
-  Input line exceeded 90 characters. Some input may be truncated.
-  FILE = "C:/Users/Dina Arch/Box/TA - ED 201/Labs/ucsb-mixture-lab3/enum_mplus/cheat_Lab3.dat
-*** WARNING in DATA command
-  Statement not terminated by a semicolon:
-  FILE = "C:/Users/Dina Arch/Box/TA - ED 201/Labs/ucsb-mixture-lab3/enum_mplus/cheat_Lab3.dat
-*** WARNING in DATA command
-  Mismatched quotation in FILE option.  A quotation mark will be assumed at
-  the end of the line.
 *** WARNING in OUTPUT command
   SAMPSTAT option is not available when all outcomes are censored, ordered
   categorical, unordered categorical (nominal), count or continuous-time
   survival variables.  Request for SAMPSTAT is ignored.
-   4 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+   1 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
 
 
 
@@ -103,11 +93,11 @@ Random Starts Specifications
   Number of initial stage iterations                            10
   Initial stage convergence criterion                    0.100D+01
   Random starts scale                                    0.500D+01
-  Random seed for generating random starts                  887676
+  Random seed for generating random starts                       0
 Link                                                         LOGIT
 
 Input data file(s)
-  C:/Users/Dina Arch/Box/TA - ED 201/Labs/ucsb-mixture-lab3/enum_mplus/cheat_Lab
+  C:/Users/dnajiarch/Box/TA - ED 201/Labs/ucsb-mixture-lab3/enum_mplus/cheat_Lab
 Input data format  FREE
 
 
@@ -143,100 +133,104 @@ RANDOM STARTS RESULTS RANKED FROM THE BEST TO THE WORST LOGLIKELIHOOD VALUES
 
 Final stage loglikelihood values at local maxima, seeds, and initial stage start numbers:
 
-            -440.027  766651           180
-            -440.027  403221           69
-            -440.027  999066           124
-            -440.027  542970           104
-            -440.027  699537           23
-            -440.027  332150           72
-            -440.027  35606            61
-            -440.027  986385           175
-            -440.027  587695           66
-            -440.027  38015            40
-            -440.027  435741           142
-            -440.027  548334           179
-            -440.027  574496           38
-            -440.027  254453           170
-            -440.027  786648           189
-            -440.027  562296           9
-            -440.027  450422           75
-            -440.027  550886           194
-            -440.027  395016           131
-            -440.027  619370           59
-            -440.027  143052           191
-            -440.027  781133           154
-            -440.027  221749           90
-            -440.027  493704           165
-            -440.027  122085           80
-            -440.027  620867           51
-            -440.027  670616           101
-            -440.027  907547           193
-            -440.027  69107            199
-            -440.027  635916           29
-            -440.027  321046           17
-            -440.027  96764            127
-            -440.027  406058           96
-            -440.027  44340            55
-            -440.027  892787           178
-            -440.027  443762           44
-            -440.027  82746            145
-            -440.027  888491           139
-            -440.027  532067           33
-            -440.027  268896           4
-            -440.027  583504           18
-            -440.027  207770           82
-            -440.027  608124           119
-            -440.027  390294           39
-            -440.027  271184           137
-            -440.027  474909           146
-            -440.027  977273           117
-            -440.027  667872           123
-            -440.027  66757            67
-            -440.027  221409           50
-            -440.027  668357           30
-            -440.027  202289           91
-            -440.027  665244           3
-            -440.027  756451           198
-            -440.027  689880           56
-            -440.027  764126           10
-            -440.027  912566           87
-            -440.027  445412           65
-            -440.027  876345           115
-            -440.027  472212           11
-            -440.027  167048           166
-            -440.027  534590           157
-            -440.027  191541           94
-            -440.027  953977           161
-            -440.027  917351           133
-            -440.027  195759           37
-            -440.027  408197           93
-            -440.027  250215           183
-            -440.027  408054           182
-            -440.027  679994           73
-            -440.027  671930           148
-            -440.027  641861           134
-            -440.027  273066           160
-            -440.027  986119           156
-            -440.027  302911           16
-            -440.027  690500           105
-            -440.027  979797           88
-            -440.027  136844           102
-            -440.027  190167           184
-            -440.027  988420           1
-            -440.027  40600            78
-            -440.027  78052            49
-            -440.027  456986           98
-            -440.027  314634           122
-            -440.027  653669           129
-            -440.027  23351            116
-            -440.027  887769           57
-            -440.027  693798           144
-            -440.027  162016           113
-            -440.027  211657           81
-            -440.027  356422           12
-            -440.027  124479           173
+            -440.027  887676           22
+            -440.027  535804           111
+            -440.027  319144           176
+            -440.027  341041           34
+            -440.027  318230           46
+            -440.027  314084           81
+            -440.027  405079           68
+            -440.027  618000           190
+            -440.027  286735           175
+            -440.027  407168           44
+            -440.027  903420           5
+            -440.027  281558           184
+            -440.027  608496           4
+            -440.027  813779           92
+            -440.027  458181           189
+            -440.027  unperturbed      0
+            -440.027  533738           11
+            -440.027  93468            3
+            -440.027  195873           6
+            -440.027  136842           58
+            -440.027  863094           147
+            -440.027  794236           127
+            -440.027  509733           130
+            -440.027  303634           169
+            -440.027  402224           91
+            -440.027  726035           191
+            -440.027  51375            148
+            -440.027  432148           30
+            -440.027  164305           128
+            -440.027  741888           138
+            -440.027  284109           82
+            -440.027  645664           39
+            -440.027  476498           179
+            -440.027  587946           120
+            -440.027  268896           124
+            -440.027  723775           97
+            -440.027  247224           94
+            -440.027  950604           172
+            -440.027  232559           136
+            -440.027  422103           62
+            -440.027  22089            143
+            -440.027  579995           183
+            -440.027  411615           171
+            -440.027  576220           115
+            -440.027  76337            76
+            -440.027  575700           100
+            -440.027  804561           59
+            -440.027  960438           116
+            -440.027  967902           52
+            -440.027  227563           63
+            -440.027  749453           33
+            -440.027  85462            51
+            -440.027  321390           133
+            -440.027  967237           48
+            -440.027  636396           168
+            -440.027  783110           72
+            -440.027  573096           20
+            -440.027  902278           21
+            -440.027  496881           192
+            -440.027  68985            17
+            -440.027  264081           186
+            -440.027  383986           159
+            -440.027  467339           66
+            -440.027  21345            199
+            -440.027  479273           156
+            -440.027  635245           121
+            -440.027  565819           65
+            -440.027  915642           40
+            -440.027  928287           197
+            -440.027  569131           26
+            -440.027  913639           162
+            -440.027  437181           135
+            -440.027  637345           19
+            -440.027  120506           45
+            -440.027  848890           95
+            -440.027  846194           93
+            -440.027  788796           145
+            -440.027  414284           158
+            -440.027  856536           144
+            -440.027  415931           10
+            -440.027  170954           86
+            -440.027  70118            104
+            -440.027  263268           165
+            -440.027  966014           37
+            -440.027  761633           50
+            -440.027  371246           101
+            -440.027  784664           75
+            -440.027  393232           152
+            -440.027  992389           77
+            -440.027  931874           141
+            -440.027  466971           109
+            -440.027  484501           163
+            -440.027  609185           181
+            -440.027  260601           36
+            -440.027  957392           79
+            -440.027  340112           126
 
-8 perturbed starting value run(s) did not converge or were rejected in the third stage.
+4 perturbed starting value run(s) did not converge or were rejected in the third stage.
 
 
 
@@ -288,8 +282,8 @@ BASED ON THE ESTIMATED MODEL
     Latent
    Classes
 
-       1         51.22082          0.16057
-       2        267.77918          0.83943
+       1        267.77908          0.83943
+       2         51.22092          0.16057
 
 
 FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
@@ -298,8 +292,8 @@ BASED ON ESTIMATED POSTERIOR PROBABILITIES
     Latent
    Classes
 
-       1         51.22082          0.16057
-       2        267.77918          0.83943
+       1        267.77908          0.83943
+       2         51.22092          0.16057
 
 
 FINAL CLASS COUNTS AND PROPORTIONS FOR THE LATENT CLASSES
@@ -310,8 +304,8 @@ Class Counts and Proportions
     Latent
    Classes
 
-       1               54          0.16928
-       2              265          0.83072
+       1              265          0.83072
+       2               54          0.16928
 
 
 CLASSIFICATION QUALITY
@@ -324,8 +318,8 @@ by Latent Class (Column)
 
            1        2
 
-    1   0.775    0.225
-    2   0.035    0.965
+    1   0.965    0.035
+    2   0.225    0.775
 
 
 Classification Probabilities for the Most Likely Latent Class Membership (Column)
@@ -333,8 +327,8 @@ by Latent Class (Row)
 
            1        2
 
-    1   0.818    0.182
-    2   0.045    0.955
+    1   0.955    0.045
+    2   0.182    0.818
 
 
 Logits for the Classification Probabilities for the Most Likely Latent Class Membership (Column)
@@ -342,8 +336,8 @@ by Latent Class (Row)
 
               1        2
 
-    1      1.500    0.000
-    2     -3.049    0.000
+    1      3.049    0.000
+    2     -1.500    0.000
 
 
 MODEL RESULTS
@@ -354,23 +348,23 @@ MODEL RESULTS
 Latent Class 1
 
  Thresholds
-    LIEEXAM$1         -0.310      0.713     -0.435      0.664
-    LIEPAPER$1        -0.360      0.696     -0.518      0.605
-    FRAUD$1            1.289      0.531      2.425      0.015
-    COPYEXAM$1         0.505      0.465      1.085      0.278
-
-Latent Class 2
-
- Thresholds
     LIEEXAM$1          4.081      1.738      2.347      0.019
     LIEPAPER$1         3.503      1.058      3.311      0.001
     FRAUD$1            3.256      0.433      7.514      0.000
     COPYEXAM$1         1.503      0.179      8.416      0.000
 
+Latent Class 2
+
+ Thresholds
+    LIEEXAM$1         -0.310      0.713     -0.435      0.664
+    LIEPAPER$1        -0.360      0.696     -0.518      0.605
+    FRAUD$1            1.289      0.531      2.425      0.015
+    COPYEXAM$1         0.505      0.465      1.085      0.278
+
 Categorical Latent Variables
 
  Means
-    C#1               -1.654      0.565     -2.926      0.003
+    C#1                1.654      0.565      2.926      0.003
 
 
 QUALITY OF NUMERICAL RESULTS
@@ -387,21 +381,6 @@ RESULTS IN PROBABILITY SCALE
 Latent Class 1
 
  LIEEXAM
-    Category 1         0.423      0.174      2.431      0.015
-    Category 2         0.577      0.174      3.315      0.001
- LIEPAPER
-    Category 1         0.411      0.168      2.441      0.015
-    Category 2         0.589      0.168      3.499      0.000
- FRAUD
-    Category 1         0.784      0.090      8.709      0.000
-    Category 2         0.216      0.090      2.400      0.016
- COPYEXAM
-    Category 1         0.624      0.109      5.710      0.000
-    Category 2         0.376      0.109      3.446      0.001
-
-Latent Class 2
-
- LIEEXAM
     Category 1         0.983      0.028     34.624      0.000
     Category 2         0.017      0.028      0.585      0.559
  LIEPAPER
@@ -414,6 +393,21 @@ Latent Class 2
     Category 1         0.818      0.027     30.769      0.000
     Category 2         0.182      0.027      6.844      0.000
 
+Latent Class 2
+
+ LIEEXAM
+    Category 1         0.423      0.174      2.431      0.015
+    Category 2         0.577      0.174      3.315      0.001
+ LIEPAPER
+    Category 1         0.411      0.168      2.441      0.015
+    Category 2         0.589      0.168      3.499      0.000
+ FRAUD
+    Category 1         0.784      0.090      8.709      0.000
+    Category 2         0.216      0.090      2.400      0.016
+ COPYEXAM
+    Category 1         0.624      0.109      5.710      0.000
+    Category 2         0.376      0.109      3.446      0.001
+
 
 LATENT CLASS INDICATOR ODDS RATIOS FOR THE LATENT CLASSES
 
@@ -423,13 +417,35 @@ LATENT CLASS INDICATOR ODDS RATIOS FOR THE LATENT CLASSES
 Latent Class 1 Compared to Latent Class 2
 
  LIEEXAM
-    Category > 1      80.717    130.685      3.379   1928.110
+    Category > 1       0.012      0.020      0.001      0.296
  LIEPAPER
-    Category > 1      47.616     49.118      6.305    359.599
+    Category > 1       0.021      0.022      0.003      0.159
  FRAUD
-    Category > 1       7.153      5.068      1.784     28.677
+    Category > 1       0.140      0.099      0.035      0.560
  COPYEXAM
-    Category > 1       2.713      1.403      0.985      7.476
+    Category > 1       0.369      0.191      0.134      1.015
+
+
+MODEL COMMAND WITH FINAL ESTIMATES USED AS STARTING VALUES
+
+     %OVERALL%
+
+     [ c#1*1.65401 ];
+
+     %C#1%
+
+     [ lieexam$1*4.08075 ];
+     [ liepaper$1*3.50299 ];
+     [ fraud$1*3.25641 ];
+     [ copyexam$1*1.50319 ];
+
+     %C#2%
+
+     [ lieexam$1*-0.31020 ];
+     [ liepaper$1*-0.36019 ];
+     [ fraud$1*1.28885 ];
+     [ copyexam$1*0.50502 ];
+
 
 
 RESIDUAL OUTPUT
@@ -495,9 +511,9 @@ The following plots are available:
   Scatterplots (sample values)
   Sample proportions and estimated probabilities
 
-     Beginning Time:  15:53:32
-        Ending Time:  15:53:41
-       Elapsed Time:  00:00:09
+     Beginning Time:  14:10:08
+        Ending Time:  14:10:18
+       Elapsed Time:  00:00:10
 
 
 
@@ -510,4 +526,4 @@ Fax: (310) 391-8971
 Web: www.StatModel.com
 Support: Support@StatModel.com
 
-Copyright (c) 1998-2022 Muthen & Muthen
+Copyright (c) 1998-2024 Muthen & Muthen

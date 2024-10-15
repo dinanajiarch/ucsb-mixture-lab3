@@ -114,7 +114,7 @@ ds <- df_cheat %>%
             n = n()) %>%
   arrange(desc(prop))
 
-ds %>% 
+prop_table <- ds %>% 
   gt () %>% 
   tab_header(title = md("**Descriptive Summary**")) %>%
   cols_label(
@@ -127,7 +127,12 @@ ds %>%
   cols_align(
     align = "center",
     columns = prop
-  ) 
+  )
+
+prop_table
+
+# Save as a Word doc
+gtsave(prop_table, here("figures", "prop_table.docx"))
 ```
 
 
@@ -153,10 +158,9 @@ lca_cheat_6  <- lapply(1:6, function(k) {
    "estimator = mlr; 
     type = mixture;
     starts = 200 100; 
-    stseed = 887676;
     processors = 10;",
   
-  OUTPUT = "sampstat residual tech11 tech14;",
+  OUTPUT = "sampstat residual tech11 tech14 svalues;",
   
   PLOT = 
     "type = plot3; 
@@ -180,7 +184,7 @@ lca_enum_fit <- mplusModeler(lca_enum,
 First, extract data:
 
 ```{r}
-# 
+
 output_cheat <- readModels(here("enum_mplus"), filefilter = "cheat", quiet = TRUE)
 
 enum_extract <- LatexSummaryTable(
@@ -200,7 +204,6 @@ enum_extract <- LatexSummaryTable(
 
 
 allFit <- enum_extract %>%
-  mutate(aBIC = -2 * LL + Parameters * log((Observations + 2) / 24)) %>%
   mutate(CAIC = -2 * LL + Parameters * (log(Observations) + 1)) %>%
   mutate(AWE = -2 * LL + 2 * Parameters * (log(Observations) + 1.5)) %>%
   mutate(SIC = -.5 * BIC) %>%
@@ -282,18 +285,17 @@ locations = cells_title()
     cells_body(
      columns = BF,
      row =  BF > 10),
-    cells_body(
+    cells_body( 
      columns =  T11_VLMR_PValue,
-     row =  T11_VLMR_PValue < .001),
+     row =  ifelse(T11_VLMR_PValue < .001 & lead(T11_VLMR_PValue) > .05, T11_VLMR_PValue < .001, NA)),
     cells_body(
      columns =  BLRT_PValue,
-     row =  BLRT_PValue < .001)
+     row =  ifelse(BLRT_PValue < .001 & lead(BLRT_PValue) > .05, BLRT_PValue < .001, NA))
   )
 )
 
 fit_table1
 ```
-
 
 ------------------------------------------------------------------------
 
@@ -302,6 +304,26 @@ Save table:
 ```{r, eval = FALSE}
 gtsave(fit_table1, here("figures", "fit_table1.png"))
 ```
+
+
+------------------------------------------------------------------------
+
+Enumeration Table Shortcut (*optional*)
+
+```{r, eval = FALSE}
+source("enum_table.txt")
+
+output_cheat <- readModels(here("enum_mplus"), filefilter = "cheat", quiet = TRUE)
+
+# To see rows:
+seeRows(output_cheat)
+
+# Arguments for `enum_table`
+# 1. readModels objects
+# 2-5. Rows of successfully estimated models 
+enum_table(output_cheat, 1:6)
+```
+
 
 ------------------------------------------------------------------------
 
@@ -410,9 +432,9 @@ ggsave(here("figures", "compare_kclass_plot.png"), dpi=300, height=5, width=7, u
 ### 2-Class Probability Plot
 
 ```{r}
-source("plot_lca_function.txt")
+source("plot_lca.txt")
 
-plot_lca_function(model_name = output_cheat$c2_cheat_lab3.out)
+plot_lca(model_name = output_cheat$c2_cheat_lab3.out)
 ```
 
 ------------------------------------------------------------------------
@@ -424,6 +446,271 @@ ggsave(here("figures", "C2_Cheat_LCA_Plot.png"), dpi="retina", height=5, width=7
 ```
 
 ------------------------------------------------------------------------
+
+### Observed Response Patterns
+
+Save response frequencies for the 4-class model with `response is _____.dat` under `SAVEDATA.`
+
+Note the optseed here!
+
+```{r, eval = FALSE}
+
+patterns  <- mplusObject(
+  
+  TITLE = "LCA - Save response patterns", 
+  
+  VARIABLE = 
+  "categorical = lieexam-copyexam; 
+   usevar =  lieexam-copyexam;
+   classes = c(2);",
+  
+  ANALYSIS = 
+   "estimator = mlr; 
+    type = mixture;    
+    starts = 0; 
+    processors = 10;
+    optseed = 887676;",
+  
+  SAVEDATA = 
+   "File=savedata.dat;
+    Save=cprob;
+    
+    ! Code to save response frequency data 
+    
+    response is resp_patterns.dat;",
+  
+  OUTPUT = "patterns tech10 tech11 tech14",
+  
+  usevariables = colnames(df_cheat),
+  rdata = df_cheat)
+
+patterns_fit <- mplusModeler(patterns,
+                dataout=here("mplus", "patterns.dat"),
+                modelout=here("mplus", "patterns.inp") ,
+                check=TRUE, run = TRUE, hashfilename = FALSE)
+```
+
+
+------------------------------------------------------------------------
+
+Read in observed response pattern data and relabel the columns
+
+```{r}
+# Read in response frequency data that we just created:
+patterns <- read_table(here("mplus", "resp_patterns.dat"),
+                        col_names=FALSE, na = "*") 
+
+# Extract the column names
+names <- names(readModels(here("mplus", "patterns.out"))[['savedata']])
+
+# Add the names back to the dataset
+colnames(patterns) <- c("Frequency", names)  
+```
+
+Create a table with the top 5 unconditional response pattern, then top of conditional response pattern for each modal class assignment
+
+```{r,eval=TRUE}
+# Order responses by highest frequency
+order_highest <- patterns %>% 
+  arrange(desc(Frequency)) 
+
+# Loop `patterns` data to list top 5 conditional response patterns for each class
+loop_cond  <- lapply(1:max(patterns$C), function(k) {       
+order_cond <- patterns %>%                    
+  filter(C == k) %>%                    
+  arrange(desc(Frequency)) %>%                
+  head(5)                                     
+  })                                          
+
+# Convert loop into data frame
+table_data <- as.data.frame(bind_rows(loop_cond))
+
+# Combine unconditional and conditional responses patterns
+response_patterns <-  rbind(order_highest[1:5,], table_data) 
+```
+
+Finally, use `{gt}` to make a nicely formatted table
+
+Note: In this example, there are only four response patterns for Class 1.
+
+```{r}
+resp_table <- response_patterns %>% 
+  gt() %>%
+    tab_header(
+    title = "Observed Response Patterns",
+    subtitle = html("Response patterns, estimated frequencies, estimated posterior class probabilities and modal assignments")) %>% 
+    tab_source_note(
+    source_note = md("Data Source: **Cheating Data**")) %>%
+    cols_label(
+      Frequency = html("<i>f</i><sub>r</sub>"),
+    LIEEXAM = "Lie on Exam",
+    LIEPAPER = "Lie on Paper",
+    FRAUD = "Fraud",
+    COPYEXAM = "Copy Exam",
+    CPROB1 = html("P<sub><i>k</i></sub>=1"),
+    CPROB2 = html("P<sub><i>k</i></sub>=2"),   # Change based on number of classes
+    C = md("*k*")) %>% 
+  tab_row_group(
+    label = "Unconditional response patterns",
+    rows = 1:5) %>%
+  tab_row_group(
+    label = md("*k* = 1 Conditional response patterns"),
+    rows = 6:9) %>% #EDIT THESE VALUES BASED ON THE LAST COLUMN
+  tab_row_group(
+    label = md("*k* = 2 Conditional response patterns"),
+    rows = 10:14)  %>% #EDIT THESE VALUES BASED ON THE LAST COLUMN
+    row_group_order(
+      groups = c("Unconditional response patterns",
+                 md("*k* = 1 Conditional response patterns"),
+                 md("*k* = 2 Conditional response patterns"))) %>% 
+    tab_footnote(
+    footnote = html(
+      "<i>Note.</i> <i>f</i><sub>r</sub> = response pattern frequency; P<sub><i>k</i></sub> = posterior class probabilities"
+    )
+  ) %>% 
+  cols_align(align = "center") %>% 
+  opt_align_table_header(align = "left") %>% 
+  gt::tab_options(table.font.names = "Times New Roman") 
+
+resp_table
+```
+
+------------------------------------------------------------------------
+
+Save table:
+
+```{r}
+gtsave(resp_table, here("figures","resp_table.docx"))
+```
+
+
+------------------------------------------------------------------------
+
+### Classification Diagnostics
+
+Use Mplus to calculate k-class confidence intervals (Note: Change the syntax to make your chosen *k*-class model):
+
+Note: We chose the two-class model, but I am looking at the classification diagnostics for the four-class model to get an idea of how the model is specified (as the two-class model syntax is too simplisitc)
+
+```{r, eval=FALSE}
+classification  <- mplusObject(
+  
+  TITLE = "LCA - Calculated k-Class 95% CI",
+  
+  VARIABLE = 
+  "categorical = lieexam-copyexam; 
+   usevar =  lieexam-copyexam;
+   classes = c(4);",
+  
+  ANALYSIS = 
+   "estimator = ml; 
+    type = mixture;    
+    starts = 0; 
+    processors = 10;
+    optseed = 417035;
+    bootstrap = 1000;",
+  
+  MODEL =
+    "
+  !CHANGE THIS SECTION TO YOUR CHOSEN k-CLASS MODEL
+    
+  %OVERALL%
+  [C#1](c1);
+  [C#2](c2);
+  [C#3](c3);
+
+  Model Constraint:
+  New(p1 p2 p3 p4);
+  
+  p1 = exp(c1)/(1+exp(c1)+exp(c2)+exp(c3));
+  p2 = exp(c2)/(1+exp(c1)+exp(c2)+exp(c3));
+  p3 = exp(c3)/(1+exp(c1)+exp(c2)+exp(c3));  
+  p4 = 1/(1+exp(c1)+exp(c2)+exp(c3));",
+
+  
+  OUTPUT = "cinterval(bcbootstrap)",
+  
+  usevariables = colnames(df_cheat),
+  rdata = df_cheat)
+
+classification_fit <- mplusModeler(classification,
+                dataout=here("mplus", "class.dat"),
+                modelout=here("mplus", "class.inp") ,
+                check=TRUE, run = TRUE, hashfilename = FALSE)
+```
+
+*Note*: Ensure that the classes did not shift during this step (i.g., Class 1 in the enumeration run is now Class 4). Evaluate output and compare the class counts and proportions for the latent classes. Using the OPTSEED function ensures replication of the best loglikelihood value run.  
+
+------------------------------------------------------------------------
+
+Read in the 4-class model:
+
+```{r}
+# Read in the 4-class model and extract information needed
+class_output <- readModels(here("mplus", "class.out"))
+
+# Entropy
+entropy <- c(class_output$summaries$Entropy, rep(NA, class_output$summaries$NLatentClasses-1))
+
+# 95% k-Class and k-class 95% Confidence Intervals
+k_ci <- class_output$parameters$ci.unstandardized %>% 
+  filter(paramHeader == "New.Additional.Parameters") %>% 
+  unite(CI, c(low2.5,up2.5), sep=", ", remove = TRUE) %>% 
+  mutate(CI = paste0("[", CI, "]")) %>% 
+  rename(kclass=est) %>% 
+  dplyr::select(kclass, CI)
+
+# AvePPk = Average Latent Class Probabilities for Most Likely Latent Class Membership (Row) by Latent Class (Column)
+avePPk <- tibble(avePPk = diag(class_output$class_counts$avgProbs.mostLikely))
+
+# mcaPk = modal class assignment proportion 
+mcaPk <- round(class_output$class_counts$mostLikely,3) %>% 
+  mutate(model = paste0("Class ", class)) %>% 
+  add_column(avePPk, k_ci) %>% 
+  rename(mcaPk = proportion) %>% 
+  dplyr::select(model, kclass, CI, mcaPk, avePPk)
+
+# OCCk = odds of correct classification
+OCCk <- mcaPk %>% 
+  mutate(OCCk = round((avePPk/(1-avePPk))/(kclass/(1-kclass)),3))
+
+# Put everything together
+class_df <- data.frame(OCCk)
+```
+
+Now, use `{gt}` to make a nicely formatted table
+
+```{r}
+class_table <- class_df %>% 
+  gt() %>%
+    tab_header(
+    title = "Model Classification Diagnostics for the 4-Class Solution") %>%
+    cols_label(
+      model = md("*k*-Class"),
+      kclass = md("*k*-Class Proportions"),
+      CI = "95% CI",
+      mcaPk = md("*mcaPk*"),
+      avePPk = md("*AvePPk*"),
+      OCCk = md("*OCCk*")) %>% 
+    sub_missing(6,
+              missing_text = "") %>%
+  cols_align(align = "center") %>% 
+  opt_align_table_header(align = "left") %>% 
+  gt::tab_options(table.font.names = "Times New Roman")
+
+class_table
+```
+
+------------------------------------------------------------------------
+
+Save table:
+
+```{r}
+gtsave(class_table, here("figures","class_table.docx"))
+```
+
+------------------------------------------------------------------------
+
 
 ## References
 

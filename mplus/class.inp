@@ -1,0 +1,36 @@
+TITLE:
+LCA - Calculated k-Class 95% CI
+DATA:
+FILE = "C:/Users/dnajiarch/Box/TA - ED 201/Labs/ucsb-mixture-lab3/mplus/
+class.dat"; 
+VARIABLE:
+NAMES = lieexam liepaper fraud copyexam; 
+ MISSING=.;
+ categorical = lieexam-copyexam; 
+   usevar =  lieexam-copyexam;
+   classes = c(4);
+ANALYSIS:
+estimator = ml; 
+    type = mixture;    
+    starts = 0; 
+    processors = 10;
+    optseed = 417035;
+    bootstrap = 1000;
+MODEL:
+
+  !CHANGE THIS SECTION TO YOUR CHOSEN k-CLASS MODEL
+    
+  %OVERALL%
+  [C#1](c1);
+  [C#2](c2);
+  [C#3](c3);
+
+  Model Constraint:
+  New(p1 p2 p3 p4);
+  
+  p1 = exp(c1)/(1+exp(c1)+exp(c2)+exp(c3));
+  p2 = exp(c2)/(1+exp(c1)+exp(c2)+exp(c3));
+  p3 = exp(c3)/(1+exp(c1)+exp(c2)+exp(c3));  
+  p4 = 1/(1+exp(c1)+exp(c2)+exp(c3));
+OUTPUT:
+cinterval(bcbootstrap)

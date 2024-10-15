@@ -1,0 +1,26 @@
+TITLE:
+LCA - Save response patterns
+DATA:
+FILE = "C:/Users/dnajiarch/Box/TA - ED 201/Labs/ucsb-mixture-lab3/mplus/
+patterns.dat"; 
+VARIABLE:
+NAMES = lieexam liepaper fraud copyexam; 
+ MISSING=.;
+ categorical = lieexam-copyexam; 
+   usevar =  lieexam-copyexam;
+   classes = c(2);
+ANALYSIS:
+estimator = mlr; 
+    type = mixture;    
+    starts = 0; 
+    processors = 10;
+    optseed = 887676;
+OUTPUT:
+patterns tech10 tech11 tech14
+SAVEDATA:
+File=savedata.dat;
+    Save=cprob;
+    
+    ! Code to save response frequency data 
+    
+    response is resp_patterns.dat;
