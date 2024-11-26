@@ -6,8 +6,8 @@ enum_extract <- LatexSummaryTable(x,
                            "BLRT_PValue", "T11_VLMR_PValue","Observations")) 
 
 # Extract lowest class size
-min_sizes <- map_df(names(output_cheat), ~ {
-  model <- output_cheat[[.x]]
+min_sizes <- map_df(names(x), ~ {
+  model <- x[[.x]]
   min_size <- min(model$class_counts$modelEstimated$proportion) * 100
   tibble(Model = .x, min_cs = round(min_size, 2))
 })
